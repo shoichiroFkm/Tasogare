@@ -64,7 +64,6 @@
     </repositories>
 
     <dependencies>
-        <!-- SkinsRestorer API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
