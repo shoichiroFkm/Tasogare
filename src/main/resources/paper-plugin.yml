@@ -1,0 +1,5 @@
+name: Tasogare
+version: '${project.version}'
+main: jp.houlab.shoichiro.tasogare.Tasogare
+api-version: '1.20'
+softdepend: ["SkinsRestorer"]
