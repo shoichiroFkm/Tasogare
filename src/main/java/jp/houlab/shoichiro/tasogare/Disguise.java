@@ -43,12 +43,22 @@ public class Disguise implements Listener {
 
                     }
 
-
                     if (team == team2) {
-
-                        for (String playerName : team1.getEntries()) {
-                            Player enemy1 = player.getServer().getPlayer(playerName);
+                        Player[] enemy1=new Player[team1.getEntries().toArray().length];
+                        int i=0;
+                        for (String name : team1.getEntries()) {
+                            enemy1[i] = player.getServer().getPlayer(name);
+                            i++;
                         }
+
+                        //ランダムで選ばれた人のprofileをget
+                        PlayerProfile profile = enemy1[i].getPlayerProfile();
+                        //黄昏さんにランダムさんのprofileをset
+                        player.setPlayerProfile(profile);
+
+                        Inventory inventory = enemy1[i].getInventory();
+
+
                     }
                 }
             }
