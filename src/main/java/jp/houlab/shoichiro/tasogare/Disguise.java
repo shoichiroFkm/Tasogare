@@ -7,8 +7,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -39,13 +39,17 @@ public class Disguise implements Listener {
                             enemy2[i] = player.getServer().getPlayer(name);
                         }
                         //スキン
-                        PlayerProfile profile = enemy2[i].getPlayerProfile();
-                        player.setPlayerProfile(profile);
+                        PlayerProfile profileP=player.getPlayerProfile();
+                        PlayerProfile profileE = enemy2[i].getPlayerProfile();
+                        player.setPlayerProfile(profileE);
                         //インベントリ
-                        Inventory inventory = enemy2[i].getInventory();
-                        Inventory inventory1=player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStack=inventory.getContents();
-                        inventory1.setContents(itemStack);
+                        PlayerInventory inventoryE = enemy2[i].getInventory();
+                        PlayerInventory inventoryP=player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStackE=  inventoryE.getArmorContents();
+                        @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
+                        inventoryP.setArmorContents(itemStackE);
+
+                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(Tasogare.getPlugin(),400);
                     }
 
                     if (team == team2) {
@@ -57,14 +61,17 @@ public class Disguise implements Listener {
                         }
 
                         //スキン
-                        PlayerProfile profile = enemy1[i].getPlayerProfile();
-                        player.setPlayerProfile(profile);
+                        PlayerProfile profileP=player.getPlayerProfile();
+                        PlayerProfile profileE = enemy1[i].getPlayerProfile();
+                        player.setPlayerProfile(profileE);
                         //インベントリ
-                        Inventory inventory = enemy1[i].getInventory();
-                        Inventory inventory1=player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStack=inventory.getContents();
-                        inventory1.setContents(itemStack);
+                        PlayerInventory inventoryE = enemy1[i].getInventory();
+                        PlayerInventory inventoryP=player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStackE=inventoryE.getArmorContents();
+                        @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
+                        inventoryP.setArmorContents(itemStackE);
 
+                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(Tasogare.getPlugin(),400);
                     }
                 }
             }

@@ -30,4 +30,7 @@ public final class Tasogare extends JavaPlugin {
         // Plugin shutdown logic
         getLogger().info("Tasogare Plugin Off");
     }
+    static public Plugin getPlugin(){
+        return plugin;
+    }
 }
