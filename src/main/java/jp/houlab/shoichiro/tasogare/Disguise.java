@@ -42,12 +42,14 @@ public class Disguise implements Listener {
                         PlayerProfile profileP=player.getPlayerProfile();
                         PlayerProfile profileE = enemy2[i].getPlayerProfile();
                         player.setPlayerProfile(profileE);
-                        //インベントリ
+                        //インベントリ（装備）
                         PlayerInventory inventoryE = enemy2[i].getInventory();
                         PlayerInventory inventoryP=player.getInventory();
                         @Nullable ItemStack @NotNull [] itemStackE=  inventoryE.getArmorContents();
                         @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
                         inventoryP.setArmorContents(itemStackE);
+
+
 
                         new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(Tasogare.getPlugin(),400);
                     }
@@ -64,7 +66,7 @@ public class Disguise implements Listener {
                         PlayerProfile profileP=player.getPlayerProfile();
                         PlayerProfile profileE = enemy1[i].getPlayerProfile();
                         player.setPlayerProfile(profileE);
-                        //インベントリ
+                        //インベントリ（装備）
                         PlayerInventory inventoryE = enemy1[i].getInventory();
                         PlayerInventory inventoryP=player.getInventory();
                         @Nullable ItemStack @NotNull [] itemStackE=inventoryE.getArmorContents();
