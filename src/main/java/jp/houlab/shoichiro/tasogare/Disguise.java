@@ -8,7 +8,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.Team;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Random;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.team1;
 import static jp.houlab.shoichiro.tasogare.Tasogare.team2;
@@ -28,36 +33,37 @@ public class Disguise implements Listener {
 
                     if (team == team1) {
                         Player[] enemy2=new Player[team2.getEntries().toArray().length];
-                        int i=0;
+                       Random random=new Random();
+                        int i= random.nextInt(enemy2.length);
                         for (String name : team2.getEntries()) {
                             enemy2[i] = player.getServer().getPlayer(name);
-                            i++;
                         }
-
-                        //ランダムで選ばれた人のprofileをget
+                        //スキン
                         PlayerProfile profile = enemy2[i].getPlayerProfile();
-                        //黄昏さんにランダムさんのprofileをset
                         player.setPlayerProfile(profile);
-
+                        //インベントリ
                         Inventory inventory = enemy2[i].getInventory();
-
+                        Inventory inventory1=player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStack=inventory.getContents();
+                        inventory1.setContents(itemStack);
                     }
 
                     if (team == team2) {
                         Player[] enemy1=new Player[team1.getEntries().toArray().length];
-                        int i=0;
+                        Random random=new Random();
+                        int i= random.nextInt(enemy1.length);
                         for (String name : team1.getEntries()) {
                             enemy1[i] = player.getServer().getPlayer(name);
-                            i++;
                         }
 
-                        //ランダムで選ばれた人のprofileをget
+                        //スキン
                         PlayerProfile profile = enemy1[i].getPlayerProfile();
-                        //黄昏さんにランダムさんのprofileをset
                         player.setPlayerProfile(profile);
-
+                        //インベントリ
                         Inventory inventory = enemy1[i].getInventory();
-
+                        Inventory inventory1=player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStack=inventory.getContents();
+                        inventory1.setContents(itemStack);
 
                     }
                 }
