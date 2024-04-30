@@ -16,6 +16,8 @@ public class ReturnScheduler extends BukkitRunnable {
     public ReturnScheduler(Player player,PlayerInventory inventory,PlayerProfile playerProfile,ItemStack[] itemStack) {
         this.player = player;
         this.inventory=inventory;
+        this.playerProfile=playerProfile;
+        this.itemStack=itemStack;
     }
 
     @Override
