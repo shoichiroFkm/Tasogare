@@ -15,8 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-import static jp.houlab.shoichiro.tasogare.Tasogare.team1;
-import static jp.houlab.shoichiro.tasogare.Tasogare.team2;
+import static jp.houlab.shoichiro.tasogare.Tasogare.*;
 
 public class Disguise implements Listener {
     @EventHandler
@@ -48,10 +47,12 @@ public class Disguise implements Listener {
                         @Nullable ItemStack @NotNull [] itemStackE=  inventoryE.getArmorContents();
                         @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
                         inventoryP.setArmorContents(itemStackE);
+                        //スキルアイテム(難しいわからん）
+                        @Nullable ItemStack @NotNull [] itemStackA= inventoryE.getContents();
+                        String[] list= new String[config.getString("skillitem").length()];
 
 
-
-                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(Tasogare.getPlugin(),400);
+                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(getPlugin(),400);
                     }
 
                     if (team == team2) {
@@ -72,8 +73,10 @@ public class Disguise implements Listener {
                         @Nullable ItemStack @NotNull [] itemStackE=inventoryE.getArmorContents();
                         @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
                         inventoryP.setArmorContents(itemStackE);
+                        //スキルアイテム
 
-                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(Tasogare.getPlugin(),400);
+
+                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(getPlugin(),400);
                     }
                 }
             }
