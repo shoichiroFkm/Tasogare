@@ -1,24 +1,12 @@
-skillitem:
+Skill:
   blender:
-
-  matasaburou:
-
+  matasaburo:
   engineer:
-
   wizard:
-
   tasogare:
-    1: glowstone_dust
-    2:
   pharmacy:
-    1: blaze_powder
-    2: dragon_breath
   hunter:
-
   observer:
-
   ninja:
-
-  kagenosisya:
-
-  ennmeinokisi:
+  omen:
+  knight:

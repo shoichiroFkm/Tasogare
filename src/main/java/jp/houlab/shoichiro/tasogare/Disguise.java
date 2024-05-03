@@ -1,6 +1,7 @@
 package jp.houlab.shoichiro.tasogare;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,8 @@ import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.*;
@@ -31,52 +34,48 @@ public class Disguise implements Listener {
                 if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
                     if (team == team1) {
-                        Player[] enemy2=new Player[team2.getEntries().toArray().length];
-                       Random random=new Random();
-                        int i= random.nextInt(enemy2.length);
-                        for (String name : team2.getEntries()) {
-                            enemy2[i] = player.getServer().getPlayer(name);
-                        }
+                        List<String> enemy2 = new ArrayList<>(team2.getEntries());
+                        int i=new Random().nextInt(enemy2.size());
+                        String enemy=enemy2.get(i);
+                        Player ene= Bukkit.getServer().getPlayer(enemy);
+
                         //スキン
-                        PlayerProfile profileP=player.getPlayerProfile();
-                        PlayerProfile profileE = enemy2[i].getPlayerProfile();
-                        player.setPlayerProfile(profileE);
+                        PlayerProfile profilePlayer=player.getPlayerProfile();
+                        PlayerProfile profileEnemy =ene.getPlayerProfile();
+                        player.setPlayerProfile(profileEnemy);
                         //インベントリ（装備）
-                        PlayerInventory inventoryE = enemy2[i].getInventory();
-                        PlayerInventory inventoryP=player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStackE=  inventoryE.getArmorContents();
-                        @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
-                        inventoryP.setArmorContents(itemStackE);
-                        //スキルアイテム(難しいわからん）
-                        @Nullable ItemStack @NotNull [] itemStackA= inventoryE.getContents();
-                        String[] list= new String[config.getString("skillitem").length()];
+                        PlayerInventory inventoryEnemy = ene.getInventory();
+                        PlayerInventory inventoryPlayer=player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStackEnemy=  inventoryEnemy.getArmorContents();
+                        @Nullable ItemStack @NotNull [] itemStackPlayer=  inventoryPlayer.getArmorContents();
+                        inventoryPlayer.setArmorContents(itemStackEnemy);
+                        //スキルアイテム(スキルをタグでgetしてabilityのアイテムをaddする）
 
 
-                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(getPlugin(),400);
+
+                        new ReturnScheduler(player,inventoryPlayer,profilePlayer,itemStackPlayer).runTaskLater(getPlugin(),400);
                     }
 
                     if (team == team2) {
-                        Player[] enemy1=new Player[team1.getEntries().toArray().length];
-                        Random random=new Random();
-                        int i= random.nextInt(enemy1.length);
-                        for (String name : team1.getEntries()) {
-                            enemy1[i] = player.getServer().getPlayer(name);
-                        }
+                        List<String> enemy1 = new ArrayList<>(team2.getEntries());
+                        int i=new Random().nextInt(enemy1.size());
+                        String enemy=enemy1.get(i);
+                        Player ene= Bukkit.getServer().getPlayer(enemy);
 
                         //スキン
-                        PlayerProfile profileP=player.getPlayerProfile();
-                        PlayerProfile profileE = enemy1[i].getPlayerProfile();
-                        player.setPlayerProfile(profileE);
+                        PlayerProfile profilePlayer=player.getPlayerProfile();
+                        PlayerProfile profileEnemy = ene.getPlayerProfile();
+                        player.setPlayerProfile(profileEnemy);
                         //インベントリ（装備）
-                        PlayerInventory inventoryE = enemy1[i].getInventory();
-                        PlayerInventory inventoryP=player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStackE=inventoryE.getArmorContents();
-                        @Nullable ItemStack @NotNull [] itemStackP=  inventoryP.getArmorContents();
-                        inventoryP.setArmorContents(itemStackE);
+                        PlayerInventory inventoryEnemy = ene.getInventory();
+                        PlayerInventory inventoryPlayer=player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStackEnemy=inventoryEnemy.getArmorContents();
+                        @Nullable ItemStack @NotNull [] itemStackPlayer=  inventoryPlayer.getArmorContents();
+                        inventoryPlayer.setArmorContents(itemStackEnemy);
                         //スキルアイテム
 
 
-                        new ReturnScheduler(player,inventoryP,profileP,itemStackP).runTaskLater(getPlugin(),400);
+                        new ReturnScheduler(player,inventoryPlayer,profilePlayer,itemStackPlayer).runTaskLater(getPlugin(),400);
                     }
                 }
             }
