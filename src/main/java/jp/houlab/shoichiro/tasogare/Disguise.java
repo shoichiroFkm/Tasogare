@@ -17,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.*;
 
@@ -39,6 +40,10 @@ public class Disguise implements Listener {
                         String enemy=enemy2.get(i);
                         Player ene= Bukkit.getServer().getPlayer(enemy);
 
+                        if(ene==null){
+                            return;
+                        }
+
                         //スキン
                         PlayerProfile profilePlayer=player.getPlayerProfile();
                         PlayerProfile profileEnemy =ene.getPlayerProfile();
@@ -49,9 +54,32 @@ public class Disguise implements Listener {
                         @Nullable ItemStack @NotNull [] itemStackEnemy=  inventoryEnemy.getArmorContents();
                         @Nullable ItemStack @NotNull [] itemStackPlayer=  inventoryPlayer.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
-                        //スキルアイテム(スキルをタグでgetしてabilityのアイテムをaddする）
+                        //スキルアイテム
+                        Set<String> tag=ene.getScoreboardTags();
 
-
+                        if (tag.contains(config.getString("blender"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                        }else if (tag.contains(config.getString("matasaburo"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
+                        }else if (tag.contains(config.getString("engineer"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                        }else if (tag.contains(config.getString("wizard"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                        }else if (tag.contains(config.getString("tasogare"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                        }else if (tag.contains(config.getString("pharmacy"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                        }else if (tag.contains(config.getString("hunter"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
+                        }else if (tag.contains(config.getString("observer"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
+                        }else if (tag.contains(config.getString("ninja"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                        }else if (tag.contains(config.getString("omen"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                        }else if (tag.contains(config.getString("knight"))){
+                            inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
+                        }
 
                         new ReturnScheduler(player,inventoryPlayer,profilePlayer,itemStackPlayer).runTaskLater(getPlugin(),400);
                     }
@@ -61,6 +89,10 @@ public class Disguise implements Listener {
                         int i=new Random().nextInt(enemy1.size());
                         String enemy=enemy1.get(i);
                         Player ene= Bukkit.getServer().getPlayer(enemy);
+
+                        if(ene==null){
+                            return;
+                        }
 
                         //スキン
                         PlayerProfile profilePlayer=player.getPlayerProfile();
