@@ -34,7 +34,7 @@ public class Disguise implements Listener {
             if (event.getAction().isRightClick()) {
                 if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
-                    if (team == team1) {
+                    if (team.getName().equals(team1.getName())) {
 
                         List<String> enemy2 = new ArrayList<>(team2.getEntries());
                         int i = new Random().nextInt(enemy2.size());
@@ -101,7 +101,7 @@ public class Disguise implements Listener {
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer).runTaskLater(getPlugin(), 400);
                     }
 
-                    if (team == team2) {
+                    if (team.getName().equals(team2.getName())) {
                         List<String> enemy1 = new ArrayList<>(team2.getEntries());
                         int i = new Random().nextInt(enemy1.size());
                         String enemy = enemy1.get(i);
