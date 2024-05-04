@@ -57,27 +57,29 @@ public class Disguise implements Listener {
                         //スキルアイテム
                         Set<String> tag=ene.getScoreboardTags();
 
+
+
                         if (tag.contains(config.getString("blender"))){
                             inventoryPlayer.addItem(new ItemStack(Material.POPPY));
-                        }else if (tag.contains(config.getString("matasaburo"))){
+                        }else if (tag.contains(config.getString("skill.matasaburo"))){
                             inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
-                        }else if (tag.contains(config.getString("engineer"))){
+                        }else if (tag.contains(config.getString("skill.engineer"))){
                             inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
-                        }else if (tag.contains(config.getString("wizard"))){
+                        }else if (tag.contains(config.getString("skill.wizard"))){
                             inventoryPlayer.addItem(new ItemStack(Material.APPLE));
-                        }else if (tag.contains(config.getString("tasogare"))){
+                        }else if (tag.contains(config.getString("skill.tasogare"))){
                             inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
-                        }else if (tag.contains(config.getString("pharmacy"))){
+                        }else if (tag.contains(config.getString("skill.pharmacy"))){
                             inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
-                        }else if (tag.contains(config.getString("hunter"))){
+                        }else if (tag.contains(config.getString("skill.hunter"))){
                             inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
-                        }else if (tag.contains(config.getString("observer"))){
+                        }else if (tag.contains(config.getString("skill.observer"))){
                             inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
-                        }else if (tag.contains(config.getString("ninja"))){
+                        }else if (tag.contains(config.getString("skill.ninja"))){
                             inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
-                        }else if (tag.contains(config.getString("omen"))){
+                        }else if (tag.contains(config.getString("skill.omen"))){
                             inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
-                        }else if (tag.contains(config.getString("knight"))){
+                        }else if (tag.contains(config.getString("skill.knight"))){
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                         }
 

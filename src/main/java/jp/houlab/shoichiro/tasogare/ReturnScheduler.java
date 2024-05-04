@@ -24,6 +24,6 @@ public class ReturnScheduler extends BukkitRunnable {
     public void run() {
 
         player.setPlayerProfile(playerProfile);
-        inventory.setArmorContents(itemStack);
+        inventory.setContents(itemStack);
     }
 }
