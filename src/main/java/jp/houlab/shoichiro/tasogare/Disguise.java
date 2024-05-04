@@ -36,80 +36,134 @@ public class Disguise implements Listener {
 
                     if (team == team1) {
                         List<String> enemy2 = new ArrayList<>(team2.getEntries());
-                        int i=new Random().nextInt(enemy2.size());
-                        String enemy=enemy2.get(i);
-                        Player ene= Bukkit.getServer().getPlayer(enemy);
+                        int i = new Random().nextInt(enemy2.size());
+                        String enemy = enemy2.get(i);
+                        Player ene = Bukkit.getServer().getPlayer(enemy);
 
-                        if(ene==null){
+                        if (ene == null) {
                             return;
                         }
 
                         //スキン
-                        PlayerProfile profilePlayer=player.getPlayerProfile();
-                        PlayerProfile profileEnemy =ene.getPlayerProfile();
-                        player.setPlayerProfile(profileEnemy);
-                        //インベントリ（装備）
-                        PlayerInventory inventoryEnemy = ene.getInventory();
-                        PlayerInventory inventoryPlayer=player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStackEnemy=  inventoryEnemy.getArmorContents();
-                        @Nullable ItemStack @NotNull [] itemStackPlayer=  inventoryPlayer.getArmorContents();
-                        inventoryPlayer.setArmorContents(itemStackEnemy);
-                        //スキルアイテム
-                        Set<String> tag=ene.getScoreboardTags();
-
-
-
-                        if (tag.contains(config.getString("blender"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.POPPY));
-                        }else if (tag.contains(config.getString("skill.matasaburo"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
-                        }else if (tag.contains(config.getString("skill.engineer"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
-                        }else if (tag.contains(config.getString("skill.wizard"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.APPLE));
-                        }else if (tag.contains(config.getString("skill.tasogare"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
-                        }else if (tag.contains(config.getString("skill.pharmacy"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
-                        }else if (tag.contains(config.getString("skill.hunter"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
-                        }else if (tag.contains(config.getString("skill.observer"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
-                        }else if (tag.contains(config.getString("skill.ninja"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
-                        }else if (tag.contains(config.getString("skill.omen"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
-                        }else if (tag.contains(config.getString("skill.knight"))){
-                            inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
-                        }
-
-                        new ReturnScheduler(player,inventoryPlayer,profilePlayer,itemStackPlayer).runTaskLater(getPlugin(),400);
-                    }
-
-                    if (team == team2) {
-                        List<String> enemy1 = new ArrayList<>(team2.getEntries());
-                        int i=new Random().nextInt(enemy1.size());
-                        String enemy=enemy1.get(i);
-                        Player ene= Bukkit.getServer().getPlayer(enemy);
-
-                        if(ene==null){
-                            return;
-                        }
-
-                        //スキン
-                        PlayerProfile profilePlayer=player.getPlayerProfile();
+                        PlayerProfile profilePlayer = player.getPlayerProfile();
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         player.setPlayerProfile(profileEnemy);
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
-                        PlayerInventory inventoryPlayer=player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStackEnemy=inventoryEnemy.getArmorContents();
-                        @Nullable ItemStack @NotNull [] itemStackPlayer=  inventoryPlayer.getArmorContents();
+                        PlayerInventory inventoryPlayer = player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStackEnemy = inventoryEnemy.getArmorContents();
+                        @Nullable ItemStack @NotNull [] itemStackPlayer = inventoryPlayer.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
                         //スキルアイテム
+                        Set<String> tag = ene.getScoreboardTags();
 
+                        for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
+                            if (tag.contains(config.getString("Skill."))) {
 
-                        new ReturnScheduler(player,inventoryPlayer,profilePlayer,itemStackPlayer).runTaskLater(getPlugin(),400);
+                                switch (ability) {
+                                    case "blender":
+                                        inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                                        break;
+                                    case "matasaburo":
+                                        inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
+                                        break;
+                                    case "engineer":
+                                        inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                                        break;
+                                    case "wizard":
+                                        inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                                        break;
+                                    case "tasogare":
+                                        inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                                        break;
+                                    case "pharmacy":
+                                        inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                                        break;
+                                    case "hunter":
+                                        inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
+                                        break;
+                                    case "observer":
+                                        inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                                        break;
+                                    case "ninja":
+                                        inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                                        break;
+                                    case "omen":
+                                        inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                                        break;
+                                    case "knight":
+                                        inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
+                                        break;
+                                }
+                            }
+                        }
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer).runTaskLater(getPlugin(), 400);
+                    }
+
+                    if (team == team2) {
+                        List<String> enemy1 = new ArrayList<>(team2.getEntries());
+                        int i = new Random().nextInt(enemy1.size());
+                        String enemy = enemy1.get(i);
+                        Player ene = Bukkit.getServer().getPlayer(enemy);
+
+                        if (ene == null) {
+                            return;
+                        }
+
+                        //スキン
+                        PlayerProfile profilePlayer = player.getPlayerProfile();
+                        PlayerProfile profileEnemy = ene.getPlayerProfile();
+                        player.setPlayerProfile(profileEnemy);
+                        //インベントリ（装備）
+                        PlayerInventory inventoryEnemy = ene.getInventory();
+                        PlayerInventory inventoryPlayer = player.getInventory();
+                        @Nullable ItemStack @NotNull [] itemStackEnemy = inventoryEnemy.getArmorContents();
+                        @Nullable ItemStack @NotNull [] itemStackPlayer = inventoryPlayer.getArmorContents();
+                        inventoryPlayer.setArmorContents(itemStackEnemy);
+                        //スキルアイテム
+                        Set<String> tag = ene.getScoreboardTags();
+
+                        for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
+                            if (tag.contains(config.getString("Skill."))) {
+
+                                switch (ability) {
+                                    case "blender":
+                                        inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                                        break;
+                                    case "matasaburo":
+                                        inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
+                                        break;
+                                    case "engineer":
+                                        inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                                        break;
+                                    case "wizard":
+                                        inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                                        break;
+                                    case "tasogare":
+                                        inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                                        break;
+                                    case "pharmacy":
+                                        inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                                        break;
+                                    case "hunter":
+                                        inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
+                                        break;
+                                    case "observer":
+                                        inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                                        break;
+                                    case "ninja":
+                                        inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                                        break;
+                                    case "omen":
+                                        inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                                        break;
+                                    case "knight":
+                                        inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
+                                        break;
+                                }
+                            }
+                        }
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer).runTaskLater(getPlugin(), 400);
                     }
                 }
             }
