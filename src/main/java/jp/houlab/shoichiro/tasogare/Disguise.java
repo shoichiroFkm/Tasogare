@@ -10,9 +10,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scoreboard.Team;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,13 +46,15 @@ public class Disguise implements Listener {
 
                         //スキン
                         PlayerProfile profilePlayer = player.getPlayerProfile();
+                        PlayerTextures texturesPlayer =profilePlayer.getTextures();
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        player.setPlayerProfile(profileEnemy);
+                        PlayerTextures texturesEnemy=profileEnemy.getTextures();
+                        profilePlayer.setTextures(texturesEnemy);
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         PlayerInventory inventoryPlayer = player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStackEnemy = inventoryEnemy.getArmorContents();
-                        @Nullable ItemStack @NotNull [] itemStackPlayer = inventoryPlayer.getArmorContents();
+                        ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
                         //スキルアイテム
                         Set<String> tag = ene.getScoreboardTags();
@@ -98,7 +99,7 @@ public class Disguise implements Listener {
                                 }
                             }
                         }
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer).runTaskLater(getPlugin(), 400);
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,texturesPlayer).runTaskLater(getPlugin(), 400);
                     }
 
                     if (team.getName().equals(team2.getName())) {
@@ -113,19 +114,22 @@ public class Disguise implements Listener {
 
                         //スキン
                         PlayerProfile profilePlayer = player.getPlayerProfile();
+                        PlayerTextures texturesPlayer =profilePlayer.getTextures();
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        player.setPlayerProfile(profileEnemy);
+                        PlayerTextures texturesEnemy=profileEnemy.getTextures();
+                        profilePlayer.setTextures(texturesEnemy);
+
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         PlayerInventory inventoryPlayer = player.getInventory();
-                        @Nullable ItemStack @NotNull [] itemStackEnemy = inventoryEnemy.getArmorContents();
-                        @Nullable ItemStack @NotNull [] itemStackPlayer = inventoryPlayer.getArmorContents();
+                        ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
                         //スキルアイテム
                         Set<String> tag = ene.getScoreboardTags();
 
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
-                            if (tag.contains(config.getString("Skill."))) {
+                            if (tag.contains(config.getString("Skill"))) {
 
                                 switch (ability) {
                                     case "blender":
@@ -164,7 +168,7 @@ public class Disguise implements Listener {
                                 }
                             }
                         }
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer).runTaskLater(getPlugin(), 400);
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,texturesPlayer).runTaskLater(getPlugin(), 400);
                     }
                 }
             }
