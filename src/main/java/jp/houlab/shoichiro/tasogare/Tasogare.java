@@ -21,8 +21,16 @@ public final class Tasogare extends JavaPlugin {
         saveDefaultConfig();
         config = getConfig();
 
-        team1 = this.getServer().getScoreboardManager().getMainScoreboard().getTeam("1");
-        team2 = this.getServer().getScoreboardManager().getMainScoreboard().getTeam("2");
+        try {
+            team1 = this.getServer().getScoreboardManager().getMainScoreboard().registerNewTeam("1");
+        }catch (Exception ignored){
+            team1 = this.getServer().getScoreboardManager().getMainScoreboard().getTeam("1");
+        }
+        try {
+            team2 = this.getServer().getScoreboardManager().getMainScoreboard().registerNewTeam("2");
+        }catch (Exception ignored){
+            team2 = this.getServer().getScoreboardManager().getMainScoreboard().getTeam("2");
+        }
     }
 
     @Override

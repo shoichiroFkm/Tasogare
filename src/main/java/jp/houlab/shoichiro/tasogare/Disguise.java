@@ -35,6 +35,7 @@ public class Disguise implements Listener {
                 if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
                     if (team == team1) {
+
                         List<String> enemy2 = new ArrayList<>(team2.getEntries());
                         int i = new Random().nextInt(enemy2.size());
                         String enemy = enemy2.get(i);
@@ -82,7 +83,7 @@ public class Disguise implements Listener {
                                     case "hunter":
                                         inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
                                         break;
-                                    case "observer":
+                                    case "spectator":
                                         inventoryPlayer.addItem(new ItemStack(Material.COCOA));
                                         break;
                                     case "ninja":
@@ -148,7 +149,7 @@ public class Disguise implements Listener {
                                     case "hunter":
                                         inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
                                         break;
-                                    case "observer":
+                                    case "spectator":
                                         inventoryPlayer.addItem(new ItemStack(Material.COCOA));
                                         break;
                                     case "ninja":
