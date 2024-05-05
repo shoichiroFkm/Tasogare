@@ -10,14 +10,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public class ReturnScheduler extends BukkitRunnable {
 
-Player player;
+    Player player;
     PlayerInventory inventory;
     PlayerProfile playerProfile;
     ItemStack[] itemStack;
     PlayerTextures textures;
 
     public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStack, PlayerTextures textures) {
-this.player=player;
+        this.player=player;
         this.inventory=inventory;
         this.playerProfile=playerProfile;
         this.itemStack=itemStack;
@@ -26,7 +26,7 @@ this.player=player;
 
     @Override
     public void run() {
-
+        player.setPlayerProfile(playerProfile);
         playerProfile.setTextures(textures);
         inventory.setContents(itemStack);
     }
