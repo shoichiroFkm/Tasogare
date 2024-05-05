@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.*;
 
@@ -50,6 +51,8 @@ public class Disguise implements Listener {
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures texturesEnemy=profileEnemy.getTextures();
                         profilePlayer.setTextures(texturesEnemy);
+                        profilePlayer.complete(true);
+                        profilePlayer.update();
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         PlayerInventory inventoryPlayer = player.getInventory();
@@ -118,7 +121,8 @@ public class Disguise implements Listener {
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures texturesEnemy=profileEnemy.getTextures();
                         profilePlayer.setTextures(texturesEnemy);
-
+                        profilePlayer.complete(true);
+                        profilePlayer.update();
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         PlayerInventory inventoryPlayer = player.getInventory();
