@@ -13,21 +13,21 @@ import java.net.URL;
 import static jp.houlab.shoichiro.tasogare.v.urlHashMap;
 
 public class ReturnScheduler extends BukkitRunnable {
-
     Player player;
     PlayerInventory inventory;
     PlayerProfile playerProfile;
-    ItemStack[] itemStack;
+    ItemStack[] itemStacks;
     PlayerTextures textures;
     URL url;
 
-    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStack, PlayerTextures textures,URL url) {
+    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStacks, PlayerTextures textures,URL url) {
         this.player=player;
         this.inventory=inventory;
         this.playerProfile=playerProfile;
-        this.itemStack=itemStack;
+        this.itemStacks=itemStacks;
         this.textures=textures;
         this.url=url;
+
     }
 
     @Override
@@ -37,9 +37,9 @@ public class ReturnScheduler extends BukkitRunnable {
         playerProfile.complete();
         playerProfile.update();
 
-        player.getInventory();
-        inventory.getArmorContents();
-        inventory.setArmorContents(itemStack);
-
+        inventory.setHelmet(inventory.getHelmet());
+        inventory.setBoots(inventory.getBoots());
+        inventory.setChestplate(inventory.getChestplate());
+        inventory.setLeggings(inventory.getLeggings());
     }
 }

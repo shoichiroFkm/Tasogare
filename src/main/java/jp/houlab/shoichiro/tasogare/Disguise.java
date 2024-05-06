@@ -46,26 +46,26 @@ public class Disguise implements Listener {
                             return;
                         }
 
-                        //スキン
+                        //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
                         PlayerTextures skinPlayer =profilePlayer.getTextures();
                         URL urlPlayer=skinPlayer.getSkin();
                         urlHashMap.put(player,urlPlayer);
-
+                        //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures skinEnemy=profileEnemy.getTextures();
                         URL urlEnemy=skinEnemy.getSkin();
-                        urlHashMap.put(ene,urlEnemy);
                         skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
-                        //インベントリ（装備）
-                        PlayerInventory inventoryEnemy = ene.getInventory();
+                        //インベントリPlayer（装備)
                         PlayerInventory inventoryPlayer = player.getInventory();
+                        ItemStack[] itemStackPlayer=inventoryPlayer.getArmorContents();
+                        //インベントリ（装備）外せなくする
+                        PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
-                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
-                        //スキルアイテム
+                        //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
 
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
@@ -108,7 +108,7 @@ public class Disguise implements Listener {
                                 }
                             }
                         }
-
+                        //20秒後に元に戻る
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
 
@@ -122,26 +122,26 @@ public class Disguise implements Listener {
                             return;
                         }
 
-                        //スキン
+                        //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
                         PlayerTextures skinPlayer =profilePlayer.getTextures();
                         URL urlPlayer=skinPlayer.getSkin();
                         urlHashMap.put(player,urlPlayer);
-
+                        //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures skinEnemy=profileEnemy.getTextures();
                         URL urlEnemy=skinEnemy.getSkin();
-                        urlHashMap.put(ene,urlEnemy);
                         skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
-                        //インベントリ（装備）
-                        PlayerInventory inventoryEnemy = ene.getInventory();
+                        //インベントリPlayer（装備）
                         PlayerInventory inventoryPlayer = player.getInventory();
-                        ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+                        //インベントリ（装備）外せなくする
+                        PlayerInventory inventoryEnemy = ene.getInventory();
+                        ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
-                        //スキルアイテム
+                        //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
 
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
@@ -184,7 +184,7 @@ public class Disguise implements Listener {
                                 }
                             }
                         }
-
+                        //20秒後元に戻す
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
                 }
