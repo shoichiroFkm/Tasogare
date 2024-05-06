@@ -32,9 +32,6 @@ public class ReturnScheduler extends BukkitRunnable {
 
     @Override
     public void run() {
-
-        player.setPlayerProfile(playerProfile);
-        playerProfile.setTextures(textures);
         urlHashMap.get(player);
         textures.setSkin(url);
         playerProfile.complete();
