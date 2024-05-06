@@ -2,6 +2,7 @@ package jp.houlab.shoichiro.tasogare;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
 
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -19,7 +20,6 @@ public class ReturnScheduler extends BukkitRunnable {
     ItemStack[] itemStacks;
     PlayerTextures textures;
     URL url;
-
     public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStacks, PlayerTextures textures,URL url) {
         this.player=player;
         this.inventory=inventory;
@@ -27,7 +27,6 @@ public class ReturnScheduler extends BukkitRunnable {
         this.itemStacks=itemStacks;
         this.textures=textures;
         this.url=url;
-
     }
 
     @Override
@@ -41,5 +40,8 @@ public class ReturnScheduler extends BukkitRunnable {
         inventory.setBoots(inventory.getBoots());
         inventory.setChestplate(inventory.getChestplate());
         inventory.setLeggings(inventory.getLeggings());
+
+        inventory.remove(new ItemStack(Material.BLAZE_POWDER));
+
     }
 }

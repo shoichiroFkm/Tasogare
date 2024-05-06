@@ -67,9 +67,8 @@ public class Disguise implements Listener {
                         inventoryPlayer.setArmorContents(itemStackEnemy);
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
-
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
-                            if (tag.contains(config.getString("Skill."))) {
+                            if (tag.contains(ability)) {
 
                                 switch (ability) {
                                     case "blender":
@@ -145,7 +144,7 @@ public class Disguise implements Listener {
                         Set<String> tag = ene.getScoreboardTags();
 
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
-                            if (tag.contains(config.getString("Skill"))) {
+                            if (tag.contains(ability)) {
 
                                 switch (ability) {
                                     case "blender":
