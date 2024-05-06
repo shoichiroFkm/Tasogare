@@ -10,3 +10,11 @@ Skill:
   ninja:
   omen:
   knight:
+
+AbilityItems:
+  GLOWSTONE_DUST:
+  BLAZE_POWDER:
+  SMITHING_TABLE:
+  PURPLE_DYE:
+  SMOKER:
+  HEART_OF_THE_SEA:
