@@ -13,12 +13,14 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scoreboard.Team;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.*;
+import static jp.houlab.shoichiro.tasogare.v.urlHashMap;
 
 public class Disguise implements Listener {
     @EventHandler
@@ -46,10 +48,15 @@ public class Disguise implements Listener {
 
                         //スキン
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        PlayerTextures texturesPlayer =profilePlayer.getTextures();
+                        PlayerTextures skinPlayer =profilePlayer.getTextures();
+                        URL urlPlayer=skinPlayer.getSkin();
+                        urlHashMap.put(player,urlPlayer);
+
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        PlayerTextures texturesEnemy=profileEnemy.getTextures();
-                        profilePlayer.setTextures(texturesEnemy);
+                        PlayerTextures skinEnemy=profileEnemy.getTextures();
+                        URL urlEnemy=skinEnemy.getSkin();
+                        urlHashMap.put(ene,urlEnemy);
+                        skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
                         //インベントリ（装備）
@@ -101,7 +108,8 @@ public class Disguise implements Listener {
                                 }
                             }
                         }
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,texturesPlayer).runTaskLater(getPlugin(), 400);
+
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
 
                     if (team.getName().equals(team2.getName())) {
@@ -116,10 +124,15 @@ public class Disguise implements Listener {
 
                         //スキン
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        PlayerTextures texturesPlayer =profilePlayer.getTextures();
+                        PlayerTextures skinPlayer =profilePlayer.getTextures();
+                        URL urlPlayer=skinPlayer.getSkin();
+                        urlHashMap.put(player,urlPlayer);
+
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        PlayerTextures texturesEnemy=profileEnemy.getTextures();
-                        profilePlayer.setTextures(texturesEnemy);
+                        PlayerTextures skinEnemy=profileEnemy.getTextures();
+                        URL urlEnemy=skinEnemy.getSkin();
+                        urlHashMap.put(ene,urlEnemy);
+                        skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
                         //インベントリ（装備）
@@ -171,7 +184,8 @@ public class Disguise implements Listener {
                                 }
                             }
                         }
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,texturesPlayer).runTaskLater(getPlugin(), 400);
+
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
                 }
             }

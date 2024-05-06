@@ -8,6 +8,10 @@ import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.net.URL;
+
+import static jp.houlab.shoichiro.tasogare.v.urlHashMap;
+
 public class ReturnScheduler extends BukkitRunnable {
 
     Player player;
@@ -15,21 +19,27 @@ public class ReturnScheduler extends BukkitRunnable {
     PlayerProfile playerProfile;
     ItemStack[] itemStack;
     PlayerTextures textures;
+    URL url;
 
-    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStack, PlayerTextures textures) {
+    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStack, PlayerTextures textures,URL url) {
         this.player=player;
         this.inventory=inventory;
         this.playerProfile=playerProfile;
         this.itemStack=itemStack;
         this.textures=textures;
+        this.url=url;
     }
 
     @Override
     public void run() {
+
         player.setPlayerProfile(playerProfile);
         playerProfile.setTextures(textures);
-        inventory.setContents(itemStack);
+        urlHashMap.get(player);
+        textures.setSkin(url);
         playerProfile.complete();
         playerProfile.update();
+
+        inventory.setContents(itemStack);
     }
 }
