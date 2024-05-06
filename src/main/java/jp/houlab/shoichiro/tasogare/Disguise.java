@@ -50,7 +50,7 @@ public class Disguise implements Listener {
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures texturesEnemy=profileEnemy.getTextures();
                         profilePlayer.setTextures(texturesEnemy);
-                        profilePlayer.complete(true);
+                        profilePlayer.complete();
                         profilePlayer.update();
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
@@ -120,7 +120,7 @@ public class Disguise implements Listener {
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures texturesEnemy=profileEnemy.getTextures();
                         profilePlayer.setTextures(texturesEnemy);
-                        profilePlayer.complete(true);
+                        profilePlayer.complete();
                         profilePlayer.update();
                         //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
@@ -154,7 +154,7 @@ public class Disguise implements Listener {
                                         inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                         break;
                                     case "hunter":
-                                        inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
+                                        inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
                                         break;
                                     case "spectator":
                                         inventoryPlayer.addItem(new ItemStack(Material.COCOA));
