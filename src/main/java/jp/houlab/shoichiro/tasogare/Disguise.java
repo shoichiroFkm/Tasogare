@@ -36,7 +36,6 @@ public class Disguise implements Listener {
                 if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
                     if (team.getName().equals(team1.getName())) {
-
                         List<String> enemy2 = new ArrayList<>(team2.getEntries());
                         int i = new Random().nextInt(enemy2.size());
                         String enemy = enemy2.get(i);
@@ -48,8 +47,8 @@ public class Disguise implements Listener {
 
                         //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        PlayerTextures skinPlayer =profilePlayer.getTextures();
-                        URL urlPlayer=skinPlayer.getSkin();
+                        PlayerTextures skinPlayer = profilePlayer.getTextures();
+                        URL urlPlayer = skinPlayer.getSkin();
                         urlHashMap.put(player,urlPlayer);
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
@@ -65,11 +64,12 @@ public class Disguise implements Listener {
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
+                        //いったんアイテム消す
+                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
                             if (tag.contains(ability)) {
-
                                 switch (ability) {
                                     case "blender":
                                         inventoryPlayer.addItem(new ItemStack(Material.POPPY));
@@ -140,12 +140,12 @@ public class Disguise implements Listener {
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
+                        //いったんアイテム消す
+                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
-
                         for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
                             if (tag.contains(ability)) {
-
                                 switch (ability) {
                                     case "blender":
                                         inventoryPlayer.addItem(new ItemStack(Material.POPPY));

@@ -31,17 +31,20 @@ public class ReturnScheduler extends BukkitRunnable {
 
     @Override
     public void run() {
+        //スキンを戻す
         urlHashMap.get(player);
         textures.setSkin(url);
         playerProfile.complete();
         playerProfile.update();
-
+        //装備を戻す
         inventory.setHelmet(inventory.getHelmet());
         inventory.setBoots(inventory.getBoots());
         inventory.setChestplate(inventory.getChestplate());
         inventory.setLeggings(inventory.getLeggings());
-
+        //enemyのabilityアイテムを消す
         inventory.remove(new ItemStack(Material.BLAZE_POWDER));
+        //Tasogareのabilityアイテムを戻す
+        inventory.addItem(new ItemStack(Material.GLOWSTONE_DUST));
 
     }
 }
