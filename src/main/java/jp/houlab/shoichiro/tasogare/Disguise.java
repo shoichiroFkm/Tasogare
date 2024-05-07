@@ -62,10 +62,11 @@ public class Disguise implements Listener {
                         profilePlayer.complete();
                         profilePlayer.update();
 
-                        //インベントリ（装備）外せなくする
+                        //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
+                        //外せなくする
 
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
@@ -100,7 +101,6 @@ public class Disguise implements Listener {
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
                     }
 
-
                     if (team.getName().equals(team2.getName())) {
                         List<String> enemy1 = new ArrayList<>(team2.getEntries());
                         int i = new Random().nextInt(enemy1.size());
@@ -128,10 +128,11 @@ public class Disguise implements Listener {
                         profilePlayer.complete();
                         profilePlayer.update();
 
-                        //インベントリ（装備）外せなくする
+                        //インベントリ（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
+                        //外せなくする
 
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
