@@ -7,4 +7,5 @@ import java.util.HashMap;
 
 public class v {
     static public HashMap<Player, URL>urlHashMap=new HashMap<>();
+
 }

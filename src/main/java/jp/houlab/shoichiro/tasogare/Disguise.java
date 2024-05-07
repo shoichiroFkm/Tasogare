@@ -20,7 +20,7 @@ import java.util.Random;
 import java.util.Set;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.*;
-import static jp.houlab.shoichiro.tasogare.v.urlHashMap;
+import static jp.houlab.shoichiro.tasogare.v.*;
 
 public class Disguise implements Listener {
     @EventHandler
@@ -49,68 +49,57 @@ public class Disguise implements Listener {
                         PlayerProfile profilePlayer = player.getPlayerProfile();
                         PlayerTextures skinPlayer = profilePlayer.getTextures();
                         URL urlPlayer = skinPlayer.getSkin();
-                        urlHashMap.put(player,urlPlayer);
+                        urlHashMap.put(player, urlPlayer);
+                        //インベントリPlayer（装備)
+                        PlayerInventory inventoryPlayer = player.getInventory();
+                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        PlayerTextures skinEnemy=profileEnemy.getTextures();
-                        URL urlEnemy=skinEnemy.getSkin();
+                        PlayerTextures skinEnemy = profileEnemy.getTextures();
+                        URL urlEnemy = skinEnemy.getSkin();
                         skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
-                        //インベントリPlayer（装備)
-                        PlayerInventory inventoryPlayer = player.getInventory();
-                        ItemStack[] itemStackPlayer=inventoryPlayer.getArmorContents();
+
                         //インベントリ（装備）外せなくする
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
 
-                        //いったんアイテム消す
-                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
-                        for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
-                            if (tag.contains(ability)) {
-                                switch (ability) {
-                                    case "blender":
-                                        inventoryPlayer.addItem(new ItemStack(Material.POPPY));
-                                        break;
-                                    case "matasaburo":
-                                        inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
-                                        break;
-                                    case "engineer":
-                                        inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
-                                        break;
-                                    case "wizard":
-                                        inventoryPlayer.addItem(new ItemStack(Material.APPLE));
-                                        break;
-                                    case "tasogare":
-                                        inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
-                                        break;
-                                    case "pharmacy":
-                                        inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
-                                        break;
-                                    case "hunter":
-                                        inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
-                                        break;
-                                    case "spectator":
-                                        inventoryPlayer.addItem(new ItemStack(Material.COCOA));
-                                        break;
-                                    case "ninja":
-                                        inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
-                                        break;
-                                    case "omen":
-                                        inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
-                                        break;
-                                    case "knight":
-                                        inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
-                                        break;
-                                }
-                            }
+                        if (tag.contains("pharmacy")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                        } else if (tag.contains("ninja")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                        } else if (tag.contains("blender")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                        } else if (tag.contains("matasaburo")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
+                        } else if (tag.contains("engineer")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                        } else if (tag.contains("wizard")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                        } else if (tag.contains("tasogare")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                        } else if (tag.contains("hunter")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
+                        } else if (tag.contains("spectator")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                        } else if (tag.contains("omen")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                        } else if (tag.contains("knight")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                         }
+
+                        //いったんアイテム消す
+                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
+
                         //20秒後に元に戻る
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
                     }
+
 
                     if (team.getName().equals(team2.getName())) {
                         List<String> enemy1 = new ArrayList<>(team2.getEntries());
@@ -127,6 +116,10 @@ public class Disguise implements Listener {
                         PlayerTextures skinPlayer =profilePlayer.getTextures();
                         URL urlPlayer=skinPlayer.getSkin();
                         urlHashMap.put(player,urlPlayer);
+                        //インベントリPlayer（装備）
+                        PlayerInventory inventoryPlayer = player.getInventory();
+                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
                         PlayerTextures skinEnemy=profileEnemy.getTextures();
@@ -134,56 +127,41 @@ public class Disguise implements Listener {
                         skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
-                        //インベントリPlayer（装備）
-                        PlayerInventory inventoryPlayer = player.getInventory();
-                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+
                         //インベントリ（装備）外せなくする
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
-                        //いったんアイテム消す
-                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
+
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
-                        for (String ability : config.getConfigurationSection("Skill").getKeys(false)) {
-                            if (tag.contains(ability)) {
-                                switch (ability) {
-                                    case "blender":
-                                        inventoryPlayer.addItem(new ItemStack(Material.POPPY));
-                                        break;
-                                    case "matasaburo":
-                                        inventoryPlayer.addItem(new ItemStack(Material.DANDELION));
-                                        break;
-                                    case "engineer":
-                                        inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
-                                        break;
-                                    case "wizard":
-                                        inventoryPlayer.addItem(new ItemStack(Material.APPLE));
-                                        break;
-                                    case "tasogare":
-                                        inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
-                                        break;
-                                    case "pharmacy":
-                                        inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
-                                        break;
-                                    case "hunter":
-                                        inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
-                                        break;
-                                    case "spectator":
-                                        inventoryPlayer.addItem(new ItemStack(Material.COCOA));
-                                        break;
-                                    case "ninja":
-                                        inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
-                                        break;
-                                    case "omen":
-                                        inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
-                                        break;
-                                    case "knight":
-                                        inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
-                                        break;
-                                }
-                            }
+                        if (tag.contains("pharmacy")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                        } else if (tag.contains("ninja")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                        } else if (tag.contains("blender")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                        } else if (tag.contains("matasaburo")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
+                        } else if (tag.contains("engineer")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                        } else if (tag.contains("wizard")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                        } else if (tag.contains("tasogare")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                        } else if (tag.contains("hunter")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
+                        } else if (tag.contains("spectator")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                        } else if (tag.contains("omen")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                        } else if (tag.contains("knight")) {
+                            inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                         }
+
+                        //いったんアイテム消す
+                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
+
                         //20秒後元に戻す
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
