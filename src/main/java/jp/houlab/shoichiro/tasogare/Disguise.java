@@ -64,6 +64,7 @@ public class Disguise implements Listener {
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
+
                         //いったんアイテム消す
                         inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                         //スキルアイテムもらう
