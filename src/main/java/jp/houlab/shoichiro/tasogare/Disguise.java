@@ -67,13 +67,14 @@ public class Disguise implements Listener {
                         profilePlayer.complete();
                         profilePlayer.update();
 
-
                         //インベントリEnemy（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
                         //外せなくする
 
+                        //いったんアイテム消す
+                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
                         if (tag.contains("pharmacy")) {
@@ -110,9 +111,6 @@ public class Disguise implements Listener {
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                             player.addScoreboardTag("knight");
                         }
-
-                        //いったんアイテム消す
-                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
 
                         //20秒後に元に戻る
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
@@ -152,6 +150,8 @@ public class Disguise implements Listener {
                         inventoryPlayer.setArmorContents(itemStackEnemy);
                         //外せなくする
 
+                        //いったんアイテム消す
+                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                         //スキルアイテムもらう
                         Set<String> tag = ene.getScoreboardTags();
                         if (tag.contains("pharmacy")) {
@@ -188,9 +188,6 @@ public class Disguise implements Listener {
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                             player.addScoreboardTag("knight");
                         }
-
-                        //いったんアイテム消す
-                        inventoryPlayer.remove(Material.GLOWSTONE_DUST);
 
                         //20秒後元に戻す
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
