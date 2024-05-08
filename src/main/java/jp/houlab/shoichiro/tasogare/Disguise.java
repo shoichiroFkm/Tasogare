@@ -78,26 +78,37 @@ public class Disguise implements Listener {
                         Set<String> tag = ene.getScoreboardTags();
                         if (tag.contains("pharmacy")) {
                             inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                            player.addScoreboardTag("pharmacy");
                         } else if (tag.contains("ninja")) {
                             inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                            player.addScoreboardTag("ninja");
                         } else if (tag.contains("blender")) {
                             inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                            player.addScoreboardTag("blender");
                         } else if (tag.contains("matasaburo")) {
                             inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
+                            player.addScoreboardTag("matasaburo");
                         } else if (tag.contains("engineer")) {
                             inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                            player.addScoreboardTag("engineer");
                         } else if (tag.contains("wizard")) {
                             inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                            player.addScoreboardTag("wizard");
                         } else if (tag.contains("tasogare")) {
                             inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                            player.addScoreboardTag("tasogare2");
                         } else if (tag.contains("hunter")) {
                             inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
+                            player.addScoreboardTag("hunter");
                         } else if (tag.contains("spectator")) {
                             inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                            player.addScoreboardTag("spectator");
                         } else if (tag.contains("omen")) {
                             inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                            player.addScoreboardTag("omen");
                         } else if (tag.contains("knight")) {
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
+                            player.addScoreboardTag("knight");
                         }
 
                         //いったんアイテム消す
@@ -145,26 +156,37 @@ public class Disguise implements Listener {
                         Set<String> tag = ene.getScoreboardTags();
                         if (tag.contains("pharmacy")) {
                             inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
+                            player.addScoreboardTag("pharmacy");
                         } else if (tag.contains("ninja")) {
                             inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
+                            player.addScoreboardTag("ninja");
                         } else if (tag.contains("blender")) {
                             inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                            player.addScoreboardTag("blender");
                         } else if (tag.contains("matasaburo")) {
                             inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
+                            player.addScoreboardTag("matasaburo");
                         } else if (tag.contains("engineer")) {
                             inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                            player.addScoreboardTag("engineer");
                         } else if (tag.contains("wizard")) {
                             inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                            player.addScoreboardTag("wizard");
                         } else if (tag.contains("tasogare")) {
                             inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                            player.addScoreboardTag("tasogare2");
                         } else if (tag.contains("hunter")) {
                             inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
+                            player.addScoreboardTag("hunter");
                         } else if (tag.contains("spectator")) {
                             inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                            player.addScoreboardTag("spectator");
                         } else if (tag.contains("omen")) {
                             inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                            player.addScoreboardTag("omen");
                         } else if (tag.contains("knight")) {
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
+                            player.addScoreboardTag("knight");
                         }
 
                         //いったんアイテム消す

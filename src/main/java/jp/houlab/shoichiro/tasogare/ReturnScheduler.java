@@ -45,26 +45,37 @@ public class ReturnScheduler extends BukkitRunnable {
         //enemyのabilityアイテムを消す
         if(inventory.contains(Material.PURPLE_DYE)) {
             inventory.remove(new ItemStack(Material.PURPLE_DYE));
+            player.removeScoreboardTag("ninja");
         }else if(inventory.contains(Material.BLAZE_POWDER)) {
             inventory.remove(new ItemStack(Material.BLAZE_POWDER));
+            player.removeScoreboardTag("pharmacy");
         }else if(inventory.contains(Material.POPPY)) {
             inventory.remove(new ItemStack(Material.POPPY));
+            player.removeScoreboardTag("blender");
         }else if(inventory.contains(Material.FEATHER)) {
             inventory.remove(new ItemStack(Material.FEATHER));
+            player.removeScoreboardTag("matasaburo");
         }else if(inventory.contains(Material.SUNFLOWER)) {
             inventory.remove(new ItemStack(Material.SUNFLOWER));
+            player.removeScoreboardTag("engineer");
         }else if(inventory.contains(Material.SMOKER)) {
             inventory.remove(new ItemStack(Material.SMOKER));
+            player.removeScoreboardTag("omen");
         }else if(inventory.contains(Material.SMITHING_TABLE)) {
             inventory.remove(new ItemStack(Material.SMITHING_TABLE));
+            player.removeScoreboardTag("hunter");
         }else if(inventory.contains(Material.APPLE)) {
             inventory.remove(new ItemStack(Material.APPLE));
+            player.removeScoreboardTag("wizard");
         }else if(inventory.contains(Material.COCOA)) {
             inventory.remove(new ItemStack(Material.COCOA));
+            player.removeScoreboardTag("spectator");
         }else if(inventory.contains(Material.HEART_OF_THE_SEA)) {
             inventory.remove(new ItemStack(Material.HEART_OF_THE_SEA));
+            player.removeScoreboardTag("knight");
         }else if(inventory.contains(Material.GLOWSTONE_DUST)) {
             inventory.remove(new ItemStack(Material.GLOWSTONE_DUST));
+            player.removeScoreboardTag("tasogare2");
         }
 
         //Tasogareのabilityアイテムを戻す
