@@ -177,13 +177,19 @@ public class Disguise implements Listener {
 
     @EventHandler
     public void InventoryClickEvent(InventoryClickEvent event) {
-        int slot = event.getSlot();
+        Player player= (Player) event.getWhoClicked();
+        Set<String> tag = player.getScoreboardTags();
+        Inventory inventory=player.getInventory();
+        InventoryType.SlotType slot = event.getSlotType();
 
-         if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
-            if (slot >= 0 && slot <= 3) {
-                event.setCancelled(true);
-                event.setResult(Event.Result.DENY);
-            }
-         }
+        if (tag.contains("tasogare") && !(inventory.contains(Material.GLOWSTONE_DUST))){
+
+             if (slot == InventoryType.SlotType.ARMOR) {
+                 event.setCancelled(true);
+                 event.setResult(Event.Result.DENY);
+
+             }
+
+        }
     }
 }
