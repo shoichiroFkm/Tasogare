@@ -63,10 +63,12 @@ public class Disguise implements Listener {
                         PlayerTextures skinEnemy = profileEnemy.getTextures();
                         URL urlEnemy = skinEnemy.getSkin();
                         skinPlayer.setSkin(urlEnemy);
+                        profilePlayer.setTextures(skinEnemy);//
                         profilePlayer.complete();
                         profilePlayer.update();
 
-                        //インベントリ（装備）
+
+                        //インベントリEnemy（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
@@ -129,10 +131,11 @@ public class Disguise implements Listener {
                         PlayerTextures skinEnemy = profileEnemy.getTextures();
                         URL urlEnemy = skinEnemy.getSkin();
                         skinPlayer.setSkin(urlEnemy);
+                        profilePlayer.setTextures(skinEnemy);//
                         profilePlayer.complete();
                         profilePlayer.update();
 
-                        //インベントリ（装備）
+                        //インベントリEnemy（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
                         ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                         inventoryPlayer.setArmorContents(itemStackEnemy);
@@ -183,13 +186,11 @@ public class Disguise implements Listener {
         InventoryType.SlotType slot = event.getSlotType();
 
         if (tag.contains("tasogare") && !(inventory.contains(Material.GLOWSTONE_DUST))){
-
              if (slot == InventoryType.SlotType.ARMOR) {
                  event.setCancelled(true);
                  event.setResult(Event.Result.DENY);
 
              }
-
         }
     }
 }
