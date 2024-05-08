@@ -4,10 +4,14 @@ import com.destroystokyo.paper.profile.PlayerProfile;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.profile.PlayerTextures;
@@ -113,17 +117,17 @@ public class Disguise implements Listener {
 
                         //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        PlayerTextures skinPlayer =profilePlayer.getTextures();
-                        URL urlPlayer=skinPlayer.getSkin();
-                        urlHashMap.put(player,urlPlayer);
+                        PlayerTextures skinPlayer = profilePlayer.getTextures();
+                        URL urlPlayer = skinPlayer.getSkin();
+                        urlHashMap.put(player, urlPlayer);
                         //インベントリPlayer（装備）
                         PlayerInventory inventoryPlayer = player.getInventory();
                         ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
 
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        PlayerTextures skinEnemy=profileEnemy.getTextures();
-                        URL urlEnemy=skinEnemy.getSkin();
+                        PlayerTextures skinEnemy = profileEnemy.getTextures();
+                        URL urlEnemy = skinEnemy.getSkin();
                         skinPlayer.setSkin(urlEnemy);
                         profilePlayer.complete();
                         profilePlayer.update();
@@ -164,10 +168,22 @@ public class Disguise implements Listener {
                         inventoryPlayer.remove(Material.GLOWSTONE_DUST);
 
                         //20秒後元に戻す
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
                     }
                 }
             }
         }
+    }
+
+    @EventHandler
+    public void InventoryClickEvent(InventoryClickEvent event) {
+        int slot = event.getSlot();
+
+         if (event.getClickedInventory().getType() == InventoryType.PLAYER) {
+            if (slot >= 0 && slot <= 3) {
+                event.setCancelled(true);
+                event.setResult(Event.Result.DENY);
+            }
+         }
     }
 }

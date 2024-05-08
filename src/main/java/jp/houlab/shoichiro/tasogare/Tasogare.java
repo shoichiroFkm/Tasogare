@@ -14,8 +14,8 @@ public final class Tasogare extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("Tasogare Plugin On");
-
         getServer().getPluginManager().registerEvents(new Disguise(), this);
+
         plugin = this;
 
         saveDefaultConfig();
