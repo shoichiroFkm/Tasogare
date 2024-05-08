@@ -207,7 +207,8 @@ public class Disguise implements Listener {
         Inventory inventory=player.getInventory();
         InventoryType.SlotType slot = event.getSlotType();
 
-        if (tag.contains("tasogare") && !(inventory.contains(Material.GLOWSTONE_DUST))){
+        if ((tag.contains("tasogare") && !(inventory.contains(Material.GLOWSTONE_DUST))) || (tag.contains("tasogare") && tag.contains("tasogare2"))){
+
              if (slot == InventoryType.SlotType.ARMOR) {
                  event.setCancelled(true);
                  event.setResult(Event.Result.DENY);
