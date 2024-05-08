@@ -1,8 +1,8 @@
 package jp.houlab.shoichiro.tasogare;
 
 import com.destroystokyo.paper.profile.PlayerProfile;
-import org.bukkit.Bukkit;
-import org.bukkit.Material;
+import com.destroystokyo.paper.profile.ProfileProperty;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
@@ -18,10 +18,7 @@ import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scoreboard.Team;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 import static jp.houlab.shoichiro.tasogare.Tasogare.*;
 import static jp.houlab.shoichiro.tasogare.v.*;
@@ -51,21 +48,30 @@ public class Disguise implements Listener {
 
                         //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        PlayerTextures skinPlayer = profilePlayer.getTextures();
+                        Set<ProfileProperty> propertyPlayer=  profilePlayer.getProperties();
+                        PlayerTextures skinPlayer =profilePlayer.getTextures();
                         URL urlPlayer = skinPlayer.getSkin();
-                        urlHashMap.put(player, urlPlayer);
-                        //インベントリPlayer（装備)
-                        PlayerInventory inventoryPlayer = player.getInventory();
-                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+                        profilePlayer.setProperties(propertyPlayer);
+                        urlHashMap.put(player,profilePlayer);
 
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
+                        Set<ProfileProperty> propertyEnemy=  profileEnemy.getProperties();
                         PlayerTextures skinEnemy = profileEnemy.getTextures();
                         URL urlEnemy = skinEnemy.getSkin();
                         skinPlayer.setSkin(urlEnemy);
-                        profilePlayer.setTextures(skinEnemy);//
+
+                        profilePlayer.setTextures(skinEnemy);
+                        skinEnemy.isSigned();
+
+                        profilePlayer.setProperties(propertyEnemy);
+
                         profilePlayer.complete();
                         profilePlayer.update();
+
+                        //インベントリPlayer（装備)
+                        PlayerInventory inventoryPlayer = player.getInventory();
+                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
 
                         //インベントリEnemy（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
@@ -99,7 +105,7 @@ public class Disguise implements Listener {
                             inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
                             player.addScoreboardTag("tasogare2");
                         } else if (tag.contains("hunter")) {
-                            inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
+                            inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
                             player.addScoreboardTag("hunter");
                         } else if (tag.contains("spectator")) {
                             inventoryPlayer.addItem(new ItemStack(Material.COCOA));
@@ -112,8 +118,15 @@ public class Disguise implements Listener {
                             player.addScoreboardTag("knight");
                         }
 
+                        //particle
+                        Location location=player.getLocation();
+                        location.getWorld().spawnParticle(Particle.SPIT,location.getX(), location.getY(), location.getZ(),600,0.6,2,0.6,0);
+                        location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION,location.getX(), location.getY(), location.getZ(),600,0.6,3,0.6,0);
+                        location.getWorld().spawnParticle(Particle.WARPED_SPORE,location.getX(), location.getY(), location.getZ(),500,1,1,1,0);
+                        location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT,1,1);
+
                         //20秒後に元に戻る
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
 
                     if (team.getName().equals(team2.getName())) {
@@ -128,21 +141,28 @@ public class Disguise implements Listener {
 
                         //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        PlayerTextures skinPlayer = profilePlayer.getTextures();
+                        Set<ProfileProperty> propertyPlayer=  profilePlayer.getProperties();
+                        PlayerTextures skinPlayer =profilePlayer.getTextures();
                         URL urlPlayer = skinPlayer.getSkin();
-                        urlHashMap.put(player, urlPlayer);
-                        //インベントリPlayer（装備）
-                        PlayerInventory inventoryPlayer = player.getInventory();
-                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
-
+                        profilePlayer.setProperties(propertyPlayer);
+                        urlHashMap.put(player,profilePlayer);
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
+                        Set<ProfileProperty> propertyEnemy=  profileEnemy.getProperties();
                         PlayerTextures skinEnemy = profileEnemy.getTextures();
                         URL urlEnemy = skinEnemy.getSkin();
                         skinPlayer.setSkin(urlEnemy);
-                        profilePlayer.setTextures(skinEnemy);//
+
+                        profilePlayer.setTextures(skinEnemy);
+                        skinEnemy.isSigned();
+
+                        profilePlayer.setProperties(propertyEnemy);
+
                         profilePlayer.complete();
                         profilePlayer.update();
+                        //インベントリPlayer（装備）
+                        PlayerInventory inventoryPlayer = player.getInventory();
+                        ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
 
                         //インベントリEnemy（装備）
                         PlayerInventory inventoryEnemy = ene.getInventory();
@@ -176,7 +196,7 @@ public class Disguise implements Listener {
                             inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
                             player.addScoreboardTag("tasogare2");
                         } else if (tag.contains("hunter")) {
-                            inventoryPlayer.addItem(new ItemStack(Material.SMITHING_TABLE));
+                            inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
                             player.addScoreboardTag("hunter");
                         } else if (tag.contains("spectator")) {
                             inventoryPlayer.addItem(new ItemStack(Material.COCOA));
@@ -188,9 +208,8 @@ public class Disguise implements Listener {
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                             player.addScoreboardTag("knight");
                         }
-
                         //20秒後元に戻す
-                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
+                        new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
                 }
             }

@@ -20,13 +20,12 @@ public class ReturnScheduler extends BukkitRunnable {
     ItemStack[] itemStacks;
     PlayerTextures textures;
     URL url;
-
-    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStacks, PlayerTextures textures, URL url) {
+    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStacks,PlayerTextures textures, URL url) {
         this.player = player;
         this.inventory = inventory;
         this.playerProfile = playerProfile;
         this.itemStacks = itemStacks;
-        this.textures = textures;
+        this.textures=textures;
         this.url = url;
     }
 
@@ -61,8 +60,8 @@ public class ReturnScheduler extends BukkitRunnable {
         }else if(inventory.contains(Material.SMOKER)) {
             inventory.remove(new ItemStack(Material.SMOKER));
             player.removeScoreboardTag("omen");
-        }else if(inventory.contains(Material.SMITHING_TABLE)) {
-            inventory.remove(new ItemStack(Material.SMITHING_TABLE));
+        }else if(inventory.contains(Material.ARCHER_POTTERY_SHERD)) {
+            inventory.remove(new ItemStack(Material.ARCHER_POTTERY_SHERD));
             player.removeScoreboardTag("hunter");
         }else if(inventory.contains(Material.APPLE)) {
             inventory.remove(new ItemStack(Material.APPLE));
@@ -77,7 +76,6 @@ public class ReturnScheduler extends BukkitRunnable {
             inventory.remove(new ItemStack(Material.GLOWSTONE_DUST));
             player.removeScoreboardTag("tasogare2");
         }
-
         //Tasogareのabilityアイテムを戻す
         inventory.addItem(new ItemStack(Material.GLOWSTONE_DUST));
     }
