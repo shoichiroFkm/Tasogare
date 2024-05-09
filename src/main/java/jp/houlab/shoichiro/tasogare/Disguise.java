@@ -55,12 +55,15 @@ public class Disguise implements Listener {
                         urlHashMap.put(player,profilePlayer);
 
                         //スキン（enemy）
+                        PlayerProfile profile= (PlayerProfile) profilePlayer.clone();
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-
-                        urlHashMap.put(ene,profileEnemy);
-
-                        player.setPlayerProfile(urlHashMap.get(ene));
-
+                        PlayerTextures skinEnemy = profileEnemy.getTextures();
+                        URL urlEnemy = skinEnemy.getSkin();
+                        skinEnemy.setSkin(urlEnemy);
+                        profile.setTextures(skinEnemy);
+                        profile.complete();
+                        profile.update();
+                        player.setPlayerProfile(profile);
 
                         //インベントリPlayer（装備)
                         PlayerInventory inventoryPlayer = player.getInventory();
@@ -140,11 +143,15 @@ public class Disguise implements Listener {
                         profilePlayer.setProperties(propertyPlayer);
                         urlHashMap.put(player,profilePlayer);
                         //スキン（enemy）
+                        PlayerProfile profile= (PlayerProfile) profilePlayer.clone();
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-
-                        urlHashMap.put(ene,profileEnemy);
-
-                        player.setPlayerProfile(urlHashMap.get(ene));
+                        PlayerTextures skinEnemy = profileEnemy.getTextures();
+                        URL urlEnemy = skinEnemy.getSkin();
+                        skinEnemy.setSkin(urlEnemy);
+                        profile.setTextures(skinEnemy);
+                        profile.complete();
+                        profile.update();
+                        player.setPlayerProfile(profile);
 
                         //インベントリPlayer（装備）
                         PlayerInventory inventoryPlayer = player.getInventory();
