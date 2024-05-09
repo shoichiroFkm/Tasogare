@@ -201,6 +201,13 @@ public class Disguise implements Listener {
                             inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                             player.addScoreboardTag("knight");
                         }
+                        //particle
+                        Location location=player.getLocation();
+                        location.getWorld().spawnParticle(Particle.SPIT,location.getX(), location.getY(), location.getZ(),600,0.6,2,0.6,0);
+                        location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION,location.getX(), location.getY(), location.getZ(),600,0.6,3,0.6,0);
+                        location.getWorld().spawnParticle(Particle.WARPED_SPORE,location.getX(), location.getY(), location.getZ(),500,1,1,1,0);
+                        location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT,1,1);
+
                         //20秒後元に戻す
                         new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer,skinPlayer,urlPlayer).runTaskLater(getPlugin(), 400);
                     }
