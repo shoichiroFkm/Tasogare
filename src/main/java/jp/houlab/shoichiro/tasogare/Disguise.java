@@ -48,26 +48,19 @@ public class Disguise implements Listener {
 
                         //スキン（player）
                         PlayerProfile profilePlayer = player.getPlayerProfile();
-                        Set<ProfileProperty> propertyPlayer=  profilePlayer.getProperties();
-                        PlayerTextures skinPlayer =profilePlayer.getTextures();
-                        URL urlPlayer = skinPlayer.getSkin();
-                        profilePlayer.setProperties(propertyPlayer);
+                        Set<ProfileProperty> propertyPlayer=  profilePlayer.getProperties();//いらない？
+                        PlayerTextures skinPlayer =profilePlayer.getTextures();//いらない？
+                        URL urlPlayer = skinPlayer.getSkin();//いらない？
+                        profilePlayer.setProperties(propertyPlayer);//いらない？
                         urlHashMap.put(player,profilePlayer);
 
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        Set<ProfileProperty> propertyEnemy=  profileEnemy.getProperties();
-                        PlayerTextures skinEnemy = profileEnemy.getTextures();
-                        URL urlEnemy = skinEnemy.getSkin();
-                        skinPlayer.setSkin(urlEnemy);
 
-                        profilePlayer.setTextures(skinEnemy);
-                        skinEnemy.isSigned();
+                        urlHashMap.put(ene,profileEnemy);
 
-                        profilePlayer.setProperties(propertyEnemy);
+                        player.setPlayerProfile(urlHashMap.get(ene));
 
-                        profilePlayer.complete();
-                        profilePlayer.update();
 
                         //インベントリPlayer（装備)
                         PlayerInventory inventoryPlayer = player.getInventory();
@@ -148,18 +141,11 @@ public class Disguise implements Listener {
                         urlHashMap.put(player,profilePlayer);
                         //スキン（enemy）
                         PlayerProfile profileEnemy = ene.getPlayerProfile();
-                        Set<ProfileProperty> propertyEnemy=  profileEnemy.getProperties();
-                        PlayerTextures skinEnemy = profileEnemy.getTextures();
-                        URL urlEnemy = skinEnemy.getSkin();
-                        skinPlayer.setSkin(urlEnemy);
 
-                        profilePlayer.setTextures(skinEnemy);
-                        skinEnemy.isSigned();
+                        urlHashMap.put(ene,profileEnemy);
 
-                        profilePlayer.setProperties(propertyEnemy);
+                        player.setPlayerProfile(urlHashMap.get(ene));
 
-                        profilePlayer.complete();
-                        profilePlayer.update();
                         //インベントリPlayer（装備）
                         PlayerInventory inventoryPlayer = player.getInventory();
                         ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();

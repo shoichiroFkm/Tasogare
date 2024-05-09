@@ -34,9 +34,10 @@ public class ReturnScheduler extends BukkitRunnable {
         //スキンを戻す
         urlHashMap.get(player);
         textures.setSkin(url);
-        playerProfile.setTextures(textures);//
-        playerProfile.complete();
-        playerProfile.update();
+        urlHashMap.get(player).setTextures(textures);
+        urlHashMap.get(player).complete();
+        urlHashMap.get(player).update();
+        player.setPlayerProfile(urlHashMap.get(player));
         //装備を戻す
         player.getInventory();
         inventory.setArmorContents(itemStacks);
