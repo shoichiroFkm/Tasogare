@@ -55,8 +55,8 @@ public class ReturnScheduler extends BukkitRunnable {
         }else if(inventory.contains(Material.FEATHER)) {
             inventory.remove(new ItemStack(Material.FEATHER));
             player.removeScoreboardTag("matasaburo");
-        }else if(inventory.contains(Material.SUNFLOWER)) {
-            inventory.remove(new ItemStack(Material.SUNFLOWER));
+        }else if(inventory.contains(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE)) {
+            inventory.remove(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
             player.removeScoreboardTag("engineer");
         }else if(inventory.contains(Material.SMOKER)) {
             inventory.remove(new ItemStack(Material.SMOKER));
@@ -73,8 +73,8 @@ public class ReturnScheduler extends BukkitRunnable {
         }else if(inventory.contains(Material.HEART_OF_THE_SEA)) {
             inventory.remove(new ItemStack(Material.HEART_OF_THE_SEA));
             player.removeScoreboardTag("knight");
-        }else if(inventory.contains(Material.GLOWSTONE_DUST)) {
-            inventory.remove(new ItemStack(Material.GLOWSTONE_DUST));
+        }else if(inventory.contains(Material.BAMBOO)) {
+            inventory.remove(new ItemStack(Material.BAMBOO));
             player.removeScoreboardTag("tasogare2");
         }
         //Tasogareのabilityアイテムを戻す

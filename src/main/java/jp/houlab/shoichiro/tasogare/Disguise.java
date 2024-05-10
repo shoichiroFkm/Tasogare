@@ -101,13 +101,13 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
                                 player.addScoreboardTag("matasaburo");
                             } else if (tag.contains("engineer")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                                inventoryPlayer.addItem(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("engineer");
                             } else if (tag.contains("wizard")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.APPLE));
                                 player.addScoreboardTag("wizard");
                             } else if (tag.contains("tasogare")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                                inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
                                 player.addScoreboardTag("tasogare2");
                             } else if (tag.contains("hunter")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
@@ -195,13 +195,13 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
                                 player.addScoreboardTag("matasaburo");
                             } else if (tag.contains("engineer")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.SUNFLOWER));
+                                inventoryPlayer.addItem(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("engineer");
                             } else if (tag.contains("wizard")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.APPLE));
                                 player.addScoreboardTag("wizard");
                             } else if (tag.contains("tasogare")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.GLOWSTONE_DUST));
+                                inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
                                 player.addScoreboardTag("tasogare2");
                             } else if (tag.contains("hunter")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
