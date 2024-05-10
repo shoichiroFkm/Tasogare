@@ -33,14 +33,6 @@ public class Disguise implements Listener {
             return;
         }
 
-        //スキン（player）
-        PlayerProfile profilePlayer = player.getPlayerProfile();
-        Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
-        PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
-        URL urlPlayer = skinPlayer.getSkin();//いらない？
-        profilePlayer.setProperties(propertyPlayer);//いらない？
-        urlHashMap.put(player, profilePlayer);
-
         Set<String> tagPlayer = player.getScoreboardTags();
         if (tagPlayer.contains("tasogare")) {
             if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
@@ -49,16 +41,24 @@ public class Disguise implements Listener {
                         if (team.getName().equals(team1.getName())) {
                             List<String> enemy2 = new ArrayList<>(team2.getEntries());
                             int i = new Random().nextInt(enemy2.size());
-                            String enemy = enemy2.get(i);
-                            Player ene = Bukkit.getServer().getPlayer(enemy);
+                            String enemies = enemy2.get(i);
+                            Player enemy = Bukkit.getServer().getPlayer(enemies);
 
-                            if (ene == null) {
+                            if (enemy == null) {
                                 return;
                             }
 
+                            //スキン（player）
+                            PlayerProfile profilePlayer = player.getPlayerProfile();
+                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
+                            PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
+                            URL urlPlayer = skinPlayer.getSkin();//いらない？
+                            profilePlayer.setProperties(propertyPlayer);//いらない？
+                            urlHashMap.put(player, profilePlayer);
+
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
-                            PlayerProfile profileEnemy = ene.getPlayerProfile();
+                            PlayerProfile profileEnemy = enemy.getPlayerProfile();
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
@@ -74,7 +74,7 @@ public class Disguise implements Listener {
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
 
                             //インベントリEnemy（装備）
-                            PlayerInventory inventoryEnemy = ene.getInventory();
+                            PlayerInventory inventoryEnemy = enemy.getInventory();
                             ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                             inventoryPlayer.setArmorContents(itemStackEnemy);
                             //外せなくする
@@ -82,7 +82,7 @@ public class Disguise implements Listener {
                             //いったんアイテム消す
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                             //スキルアイテムもらう
-                            Set<String> tag= ene.getScoreboardTags();
+                            Set<String> tag= enemy.getScoreboardTags();
                             if (tag.contains("pharmacy")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                 player.addScoreboardTag("pharmacy");
@@ -132,16 +132,24 @@ public class Disguise implements Listener {
                         if (team.getName().equals(team2.getName())) {
                             List<String> enemy1 = new ArrayList<>(team1.getEntries());
                             int i = new Random().nextInt(enemy1.size());
-                            String enemy = enemy1.get(i);
-                            Player ene = Bukkit.getServer().getPlayer(enemy);
+                            String enemies = enemy1.get(i);
+                            Player enemy = Bukkit.getServer().getPlayer(enemies);
 
-                            if (ene == null) {
+                            if (enemy == null) {
                                 return;
                             }
 
+                            //スキン（player）
+                            PlayerProfile profilePlayer = player.getPlayerProfile();
+                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
+                            PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
+                            URL urlPlayer = skinPlayer.getSkin();//いらない？
+                            profilePlayer.setProperties(propertyPlayer);//いらない？
+                            urlHashMap.put(player, profilePlayer);
+
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
-                            PlayerProfile profileEnemy = ene.getPlayerProfile();
+                            PlayerProfile profileEnemy = enemy.getPlayerProfile();
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
@@ -157,7 +165,7 @@ public class Disguise implements Listener {
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
 
                             //インベントリEnemy（装備）
-                            PlayerInventory inventoryEnemy = ene.getInventory();
+                            PlayerInventory inventoryEnemy = enemy.getInventory();
                             ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                             inventoryPlayer.setArmorContents(itemStackEnemy);
                             //外せなくする
@@ -165,7 +173,7 @@ public class Disguise implements Listener {
                             //いったんアイテム消す
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
                             //スキルアイテムもらう
-                            Set<String> tag = ene.getScoreboardTags();
+                            Set<String> tag = enemy.getScoreboardTags();
                             if (tag.contains("pharmacy")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                 player.addScoreboardTag("pharmacy");
