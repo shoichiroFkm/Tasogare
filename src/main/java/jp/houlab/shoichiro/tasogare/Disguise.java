@@ -33,9 +33,17 @@ public class Disguise implements Listener {
             return;
         }
 
+        //スキン（player）
+        PlayerProfile profilePlayer = player.getPlayerProfile();
+        Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
+        PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
+        URL urlPlayer = skinPlayer.getSkin();//いらない？
+        profilePlayer.setProperties(propertyPlayer);//いらない？
+        urlHashMap.put(player, profilePlayer);
+
         Set<String> tagPlayer = player.getScoreboardTags();
         if (tagPlayer.contains("tasogare")) {
-            if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_AIR) {
+            if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
                     if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
                         if (team.getName().equals(team1.getName())) {
@@ -48,27 +56,15 @@ public class Disguise implements Listener {
                                 return;
                             }
 
-                            //スキン（player）
-                            PlayerProfile profilePlayer = player.getPlayerProfile();
-                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
-                            PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
-                            URL urlPlayer = skinPlayer.getSkin();//いらない？
-                            profilePlayer.setProperties(propertyPlayer);//いらない？
-                            urlHashMap.put(player, profilePlayer);
-
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
                             PlayerProfile profileEnemy = ene.getPlayerProfile();
-
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
-
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
                             skinEnemy.setSkin(urlEnemy);
                             profile.setTextures(skinEnemy);
-
                             profile.setProperties(propertyEnemy);
-
                             profile.complete();
                             profile.update();
                             player.setPlayerProfile(profile);
@@ -143,26 +139,15 @@ public class Disguise implements Listener {
                                 return;
                             }
 
-                            //スキン（player）
-                            PlayerProfile profilePlayer = player.getPlayerProfile();
-                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
-                            PlayerTextures skinPlayer = profilePlayer.getTextures();
-                            URL urlPlayer = skinPlayer.getSkin();
-                            profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player, profilePlayer);
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
                             PlayerProfile profileEnemy = ene.getPlayerProfile();
-
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
-
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
                             skinEnemy.setSkin(urlEnemy);
                             profile.setTextures(skinEnemy);
-
                             profile.setProperties(propertyEnemy);
-
                             profile.complete();
                             profile.update();
                             player.setPlayerProfile(profile);
