@@ -62,6 +62,8 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
+
+
                             skinEnemy.setSkin(urlEnemy);
                             profile.setTextures(skinEnemy);
                             profile.setProperties(propertyEnemy);
@@ -153,6 +155,7 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
+
                             skinEnemy.setSkin(urlEnemy);
                             profile.setTextures(skinEnemy);
                             profile.setProperties(propertyEnemy);
