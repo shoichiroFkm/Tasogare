@@ -7,10 +7,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
@@ -35,8 +35,7 @@ public class Disguise implements Listener {
 
         Set<String> tagPlayer = player.getScoreboardTags();
         if (tagPlayer.contains("tasogare")) {
-            if (event.getHand() == EquipmentSlot.HAND) {
-                if (event.getAction().isRightClick()) {
+            if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_AIR) {
                     if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
                         if (team.getName().equals(team1.getName())) {
@@ -230,7 +229,6 @@ public class Disguise implements Listener {
                 }
             }
         }
-    }
 
     @EventHandler
     public void InventoryClickEvent(InventoryClickEvent event) {
