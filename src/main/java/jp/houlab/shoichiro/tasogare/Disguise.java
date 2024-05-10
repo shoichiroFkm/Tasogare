@@ -125,8 +125,8 @@ public class Disguise implements Listener {
 
                             //particle
                             Location location = player.getLocation();
-                            location.getWorld().spawnParticle(Particle.SPIT, location.getX(), location.getY(), location.getZ(), 800, 0.8, 3, 0.8, 0);
-                            location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, location.getX(), location.getY(), location.getZ(), 600, 0.6, 3, 0.6, 0);
+                            location.getWorld().spawnParticle(Particle.SPIT, location.getX(), location.getY(), location.getZ(), 800, 0.3, 1, 0.3, 0);
+                            location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, location.getX(), location.getY(), location.getZ(), 600, 0.3, 2, 0.3, 0);
                             location.getWorld().spawnParticle(Particle.WARPED_SPORE, location.getX(), location.getY(), location.getZ(), 500, 1, 1, 1, 0);
                             location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT, 1, 1);
 
@@ -218,8 +218,8 @@ public class Disguise implements Listener {
                             }
                             //particle
                             Location location = player.getLocation();
-                            location.getWorld().spawnParticle(Particle.SPIT, location.getX(), location.getY(), location.getZ(), 800, 0.8, 3, 0.8, 0);
-                            location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, location.getX(), location.getY(), location.getZ(), 600, 0.6, 3, 0.6, 0);
+                            location.getWorld().spawnParticle(Particle.SPIT, location.getX(), location.getY(), location.getZ(), 800, 0.3, 1, 0.3, 0);
+                            location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, location.getX(), location.getY(), location.getZ(), 600, 0.3, 2, 0.3, 0);
                             location.getWorld().spawnParticle(Particle.WARPED_SPORE, location.getX(), location.getY(), location.getZ(), 500, 1, 1, 1, 0);
                             location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT, 1, 1);
 
