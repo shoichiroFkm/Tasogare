@@ -20,20 +20,22 @@ public class ReturnScheduler extends BukkitRunnable {
     ItemStack[] itemStacks;
     PlayerTextures textures;
     URL url;
-    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStacks,PlayerTextures textures, URL url) {
+    PlayerTextures.SkinModel model;
+    public ReturnScheduler(Player player, PlayerInventory inventory, PlayerProfile playerProfile, ItemStack[] itemStacks,PlayerTextures textures, URL url,PlayerTextures.SkinModel model) {
         this.player = player;
         this.inventory = inventory;
         this.playerProfile = playerProfile;
         this.itemStacks = itemStacks;
         this.textures=textures;
         this.url = url;
+        this.model=model;
     }
 
     @Override
     public void run() {
         //スキンを戻す
         urlHashMap.get(player);
-        textures.setSkin(url);
+        textures.setSkin(url,model);
         urlHashMap.get(player).setTextures(textures);
         urlHashMap.get(player).complete();
         urlHashMap.get(player).update();

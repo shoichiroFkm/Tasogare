@@ -134,7 +134,7 @@ public class Disguise implements Listener {
                             new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
 
                             //20秒後に元に戻る
-                            new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
+                            new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer,skinModelPlayer).runTaskLater(getPlugin(), 400);
                         }
 
                         if (team.getName().equals(team2.getName())) {
@@ -232,7 +232,7 @@ public class Disguise implements Listener {
                             new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
 
                             //20秒後元に戻す
-                            new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
+                            new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer,skinModelPlayer).runTaskLater(getPlugin(), 400);
                         }
                     }
                 }
