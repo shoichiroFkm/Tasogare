@@ -39,6 +39,8 @@ public class Disguise implements Listener {
             if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
                     if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
+                        new RemainScheduler(player).runTaskTimer(Tasogare.getPlugin(),0,20);
+
                         if (team.getName().equals(team1.getName())) {
                             List<String> enemy2 = new ArrayList<>(team2.getEntries());
                             int i = new Random().nextInt(enemy2.size());
@@ -155,6 +157,7 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
+
 
                             skinEnemy.setSkin(urlEnemy);
                             profile.setTextures(skinEnemy);
