@@ -39,8 +39,6 @@ public class Disguise implements Listener {
             if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK || event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK) {
                     if (event.getMaterial().equals(Material.GLOWSTONE_DUST)) {
 
-                        new RemainScheduler(player).runTaskTimer(Tasogare.getPlugin(),0,20);
-
                         if (team.getName().equals(team1.getName())) {
                             List<String> enemy2 = new ArrayList<>(team2.getEntries());
                             int i = new Random().nextInt(enemy2.size());
@@ -56,6 +54,9 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
                             PlayerTextures skinPlayer = profilePlayer.getTextures();
                             URL urlPlayer = skinPlayer.getSkin();
+                            PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
+                            skinPlayer.setSkin(urlPlayer,skinModelPlayer);
+                            profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
 
@@ -65,14 +66,15 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
-
-
-                            skinEnemy.setSkin(urlEnemy);
+                            PlayerTextures.SkinModel skinModelEnemy=skinEnemy.getSkinModel();
+                            skinEnemy.setSkin(urlEnemy,skinModelEnemy);
                             profile.setTextures(skinEnemy);
                             profile.setProperties(propertyEnemy);
                             profile.complete();
                             profile.update();
                             player.setPlayerProfile(profile);
+
+
 
                             //インベントリPlayer（装備)
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -129,6 +131,8 @@ public class Disguise implements Listener {
                             location.getWorld().spawnParticle(Particle.WARPED_SPORE, location.getX(), location.getY(), location.getZ(), 500, 1, 1, 1, 0);
                             location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT, 1, 1);
 
+                            new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
+
                             //20秒後に元に戻る
                             new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
                         }
@@ -148,8 +152,12 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
                             PlayerTextures skinPlayer = profilePlayer.getTextures();
                             URL urlPlayer = skinPlayer.getSkin();
+                            PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
+                            skinPlayer.setSkin(urlPlayer,skinModelPlayer);
+                            profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
+
 
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
@@ -157,14 +165,15 @@ public class Disguise implements Listener {
                             Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                             PlayerTextures skinEnemy = profileEnemy.getTextures();
                             URL urlEnemy = skinEnemy.getSkin();
-
-
-                            skinEnemy.setSkin(urlEnemy);
+                            PlayerTextures.SkinModel skinModelEnemy=skinEnemy.getSkinModel();
+                            skinEnemy.setSkin(urlEnemy,skinModelEnemy);
                             profile.setTextures(skinEnemy);
                             profile.setProperties(propertyEnemy);
                             profile.complete();
                             profile.update();
                             player.setPlayerProfile(profile);
+
+
 
                             //インベントリPlayer（装備）
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -220,6 +229,8 @@ public class Disguise implements Listener {
                             location.getWorld().spawnParticle(Particle.WARPED_SPORE, location.getX(), location.getY(), location.getZ(), 500, 1, 1, 1, 0);
                             location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT, 1, 1);
 
+                            new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
+
                             //20秒後元に戻す
                             new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer).runTaskLater(getPlugin(), 400);
                         }
@@ -249,16 +260,6 @@ public class Disguise implements Listener {
     public void PlayerDeath(PlayerDeathEvent event) {
         Player player = event.getPlayer();
         Set<String> tag = player.getScoreboardTags();
-        Team team = player.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
-        if (team == null) {
-            return;
-        }
-
-        if (team.getName().equals(team1.getName())) {
-            List<String> enemy2 = new ArrayList<>(team2.getEntries());
-            int i = new Random().nextInt(enemy2.size());
-            String enemies = enemy2.get(i);
-            Player enemy = Bukkit.getServer().getPlayer(enemies);
 
             PlayerProfile profilePlayer = player.getPlayerProfile();
             Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
@@ -268,39 +269,18 @@ public class Disguise implements Listener {
             urlHashMap.put(player, profilePlayer);
 
             if ((tag.contains("tasogare")) ) {
-                if(profilePlayer.hasProperty(String.valueOf(enemy))){
+                if(profilePlayer.hasTextures()) {
                     urlHashMap.get(player);
                     skinPlayer.setSkin(urlPlayer);
                     urlHashMap.get(player).setTextures(skinPlayer);
                     urlHashMap.get(player).complete();
                     urlHashMap.get(player).update();
                     player.setPlayerProfile(urlHashMap.get(player));
-                }
-            }
 
-        }else if (team.getName().equals(team2.getName())){
-            List<String> enemy1 = new ArrayList<>(team1.getEntries());
-            int i = new Random().nextInt(enemy1.size());
-            String enemies = enemy1.get(i);
-            Player enemy = Bukkit.getServer().getPlayer(enemies);
 
-            PlayerProfile profilePlayer = player.getPlayerProfile();
-            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
-            PlayerTextures skinPlayer = profilePlayer.getTextures();
-            URL urlPlayer = skinPlayer.getSkin();
-            profilePlayer.setProperties(propertyPlayer);
-            urlHashMap.put(player, profilePlayer);
 
-            if ((tag.contains("tasogare")) ) {
-                if(profilePlayer.hasProperty(String.valueOf(enemy))) {
-                    urlHashMap.get(player);
-                    skinPlayer.setSkin(urlPlayer);
-                    urlHashMap.get(player).setTextures(skinPlayer);
-                    urlHashMap.get(player).complete();
-                    urlHashMap.get(player).update();
-                    player.setPlayerProfile(urlHashMap.get(player));
+
                 }
             }
         }
     }
-}
