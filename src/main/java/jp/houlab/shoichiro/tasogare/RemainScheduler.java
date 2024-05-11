@@ -26,7 +26,7 @@ public class RemainScheduler extends BukkitRunnable {
             return;
         }
 
-        if (time > 0 && time > 0 && time > 0) {
+        if (time > 0) {
             Title title = Title.title(Component.text(""), Component.text("ULT残り" + time + "秒"), Title.Times.times(Duration.ofSeconds(0), Duration.ofSeconds(20), Duration.ofSeconds(0)));
             player.showTitle(title);
         }
