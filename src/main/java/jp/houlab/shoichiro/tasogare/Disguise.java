@@ -8,6 +8,7 @@ import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -50,10 +51,10 @@ public class Disguise implements Listener {
 
                             //スキン（player）
                             PlayerProfile profilePlayer = player.getPlayerProfile();
-                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
-                            PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
-                            URL urlPlayer = skinPlayer.getSkin();//いらない？
-                            profilePlayer.setProperties(propertyPlayer);//いらない？
+                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
+                            PlayerTextures skinPlayer = profilePlayer.getTextures();
+                            URL urlPlayer = skinPlayer.getSkin();
+                            profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
 
                             //スキン（enemy）
@@ -79,7 +80,6 @@ public class Disguise implements Listener {
                             PlayerInventory inventoryEnemy = enemy.getInventory();
                             ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                             inventoryPlayer.setArmorContents(itemStackEnemy);
-                            //外せなくする
 
                             //いったんアイテム消す
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
@@ -143,10 +143,10 @@ public class Disguise implements Listener {
 
                             //スキン（player）
                             PlayerProfile profilePlayer = player.getPlayerProfile();
-                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();//いらない？
-                            PlayerTextures skinPlayer = profilePlayer.getTextures();//いらない？
-                            URL urlPlayer = skinPlayer.getSkin();//いらない？
-                            profilePlayer.setProperties(propertyPlayer);//いらない？
+                            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
+                            PlayerTextures skinPlayer = profilePlayer.getTextures();
+                            URL urlPlayer = skinPlayer.getSkin();
+                            profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
 
                             //スキン（enemy）
@@ -171,7 +171,6 @@ public class Disguise implements Listener {
                             PlayerInventory inventoryEnemy = enemy.getInventory();
                             ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
                             inventoryPlayer.setArmorContents(itemStackEnemy);
-                            //外せなくする
 
                             //いったんアイテム消す
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
@@ -240,6 +239,65 @@ public class Disguise implements Listener {
                  event.setResult(Event.Result.DENY);
 
              }
+        }
+    }
+
+    @EventHandler
+    public void PlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getPlayer();
+        Set<String> tag = player.getScoreboardTags();
+        Team team = player.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
+        if (team == null) {
+            return;
+        }
+
+        if (team.getName().equals(team1.getName())) {
+            List<String> enemy2 = new ArrayList<>(team2.getEntries());
+            int i = new Random().nextInt(enemy2.size());
+            String enemies = enemy2.get(i);
+            Player enemy = Bukkit.getServer().getPlayer(enemies);
+
+            PlayerProfile profilePlayer = player.getPlayerProfile();
+            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
+            PlayerTextures skinPlayer = profilePlayer.getTextures();
+            URL urlPlayer = skinPlayer.getSkin();
+            profilePlayer.setProperties(propertyPlayer);
+            urlHashMap.put(player, profilePlayer);
+
+            if ((tag.contains("tasogare")) ) {
+                if(profilePlayer.hasProperty(String.valueOf(enemy))){
+                    urlHashMap.get(player);
+                    skinPlayer.setSkin(urlPlayer);
+                    urlHashMap.get(player).setTextures(skinPlayer);
+                    urlHashMap.get(player).complete();
+                    urlHashMap.get(player).update();
+                    player.setPlayerProfile(urlHashMap.get(player));
+                }
+            }
+
+        }else if (team.getName().equals(team2.getName())){
+            List<String> enemy1 = new ArrayList<>(team1.getEntries());
+            int i = new Random().nextInt(enemy1.size());
+            String enemies = enemy1.get(i);
+            Player enemy = Bukkit.getServer().getPlayer(enemies);
+
+            PlayerProfile profilePlayer = player.getPlayerProfile();
+            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
+            PlayerTextures skinPlayer = profilePlayer.getTextures();
+            URL urlPlayer = skinPlayer.getSkin();
+            profilePlayer.setProperties(propertyPlayer);
+            urlHashMap.put(player, profilePlayer);
+
+            if ((tag.contains("tasogare")) ) {
+                if(profilePlayer.hasProperty(String.valueOf(enemy))) {
+                    urlHashMap.get(player);
+                    skinPlayer.setSkin(urlPlayer);
+                    urlHashMap.get(player).setTextures(skinPlayer);
+                    urlHashMap.get(player).complete();
+                    urlHashMap.get(player).update();
+                    player.setPlayerProfile(urlHashMap.get(player));
+                }
+            }
         }
     }
 }
