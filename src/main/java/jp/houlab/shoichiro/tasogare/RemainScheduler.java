@@ -20,7 +20,7 @@ public class RemainScheduler extends BukkitRunnable {
     public void run() {
         time--;
 
-        if (time < 0) {
+        if ((time < 0) || (time>0 && player.isDead())){
             player.clearTitle();
             cancel();
             return;
