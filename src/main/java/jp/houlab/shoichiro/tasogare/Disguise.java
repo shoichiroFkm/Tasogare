@@ -74,8 +74,6 @@ public class Disguise implements Listener {
                             profile.update();
                             player.setPlayerProfile(profile);
 
-
-
                             //インベントリPlayer（装備)
                             PlayerInventory inventoryPlayer = player.getInventory();
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
@@ -158,7 +156,6 @@ public class Disguise implements Listener {
                             profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
 
-
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
                             PlayerProfile profileEnemy = enemy.getPlayerProfile();
@@ -172,8 +169,6 @@ public class Disguise implements Listener {
                             profile.complete();
                             profile.update();
                             player.setPlayerProfile(profile);
-
-
 
                             //インベントリPlayer（装備）
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -265,21 +260,20 @@ public class Disguise implements Listener {
             Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
             PlayerTextures skinPlayer = profilePlayer.getTextures();
             URL urlPlayer = skinPlayer.getSkin();
+            PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
+            skinPlayer.setSkin(urlPlayer,skinModelPlayer);
+            profilePlayer.setTextures(skinPlayer);
             profilePlayer.setProperties(propertyPlayer);
             urlHashMap.put(player, profilePlayer);
 
             if ((tag.contains("tasogare")) ) {
                 if(profilePlayer.hasTextures()) {
                     urlHashMap.get(player);
-                    skinPlayer.setSkin(urlPlayer);
+                    skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                     urlHashMap.get(player).setTextures(skinPlayer);
                     urlHashMap.get(player).complete();
                     urlHashMap.get(player).update();
                     player.setPlayerProfile(urlHashMap.get(player));
-
-
-
-
                 }
             }
         }
