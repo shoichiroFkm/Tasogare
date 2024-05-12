@@ -255,10 +255,19 @@ public class Disguise implements Listener {
     public void PlayerDeath(PlayerDeathEvent event) {
         Player player = event.getPlayer();
         Set<String> tag = player.getScoreboardTags();
+        urlHashMap.get(player);
+        Set<ProfileProperty> propertyPlayer =urlHashMap.get(player).getProperties();
+        PlayerTextures skinPlayer = urlHashMap.get(player).getTextures();
+        URL urlPlayer = skinPlayer.getSkin();
+        PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
 
-            if ((tag.contains("tasogare")) ) {
-                if(urlHashMap.get(player).hasTextures()) {
-
+        if ((tag.contains("tasogare")) ) {
+                if(!urlHashMap.get(player).hasTextures()) {
+                    skinPlayer.setSkin(urlPlayer,skinModelPlayer);
+                    urlHashMap.get(player).setTextures(skinPlayer);
+                    urlHashMap.get(player).setProperties(propertyPlayer);
+                    urlHashMap.get(player).complete();
+                    urlHashMap.get(player).update();
                     player.setPlayerProfile(urlHashMap.get(player));
                 }
             }
