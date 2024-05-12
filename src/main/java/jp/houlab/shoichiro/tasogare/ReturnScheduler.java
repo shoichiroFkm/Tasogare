@@ -33,11 +33,6 @@ public class ReturnScheduler extends BukkitRunnable {
 
     @Override
     public void run() {
-
-        if(player.isDead()){
-            cancel();
-            return;
-        }
         //スキンを戻す
         urlHashMap.get(player);
         textures.setSkin(url,model);

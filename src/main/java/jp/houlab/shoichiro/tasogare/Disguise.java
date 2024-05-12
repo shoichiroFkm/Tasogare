@@ -269,6 +269,9 @@ public class Disguise implements Listener {
                     urlHashMap.get(player).complete();
                     urlHashMap.get(player).update();
                     player.setPlayerProfile(urlHashMap.get(player));
+
+                    Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
+
                 }
             }
         }
