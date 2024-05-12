@@ -256,23 +256,9 @@ public class Disguise implements Listener {
         Player player = event.getPlayer();
         Set<String> tag = player.getScoreboardTags();
 
-            PlayerProfile profilePlayer = player.getPlayerProfile();
-            Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
-            PlayerTextures skinPlayer = profilePlayer.getTextures();
-            URL urlPlayer = skinPlayer.getSkin();
-            PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
-            skinPlayer.setSkin(urlPlayer,skinModelPlayer);
-            profilePlayer.setTextures(skinPlayer);
-            profilePlayer.setProperties(propertyPlayer);
-            urlHashMap.put(player, profilePlayer);
-
             if ((tag.contains("tasogare")) ) {
-                if(profilePlayer.hasTextures()) {
-                    urlHashMap.get(player);
-                    skinPlayer.setSkin(urlPlayer,skinModelPlayer);
-                    urlHashMap.get(player).setTextures(skinPlayer);
-                    urlHashMap.get(player).complete();
-                    urlHashMap.get(player).update();
+                if(urlHashMap.get(player).hasTextures()) {
+
                     player.setPlayerProfile(urlHashMap.get(player));
                 }
             }
