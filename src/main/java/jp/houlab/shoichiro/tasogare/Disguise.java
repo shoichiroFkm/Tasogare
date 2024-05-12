@@ -123,14 +123,10 @@ public class Disguise implements Listener {
                             }
 
                             //particle
-                            Location location = player.getLocation();
-                            location.getWorld().spawnParticle(Particle.SPIT, location.getX(), location.getY(), location.getZ(), 800, 0.3, 1, 0.3, 0);
-                            location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, location.getX(), location.getY(), location.getZ(), 600, 0.3, 2, 0.3, 0);
-                            location.getWorld().spawnParticle(Particle.WARPED_SPORE, location.getX(), location.getY(), location.getZ(), 500, 1, 1, 1, 0);
-                            location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT, 1, 1);
-
+                            new CenterScheduler(player).runTaskLater(getPlugin(),7);
+                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
+                            //残り時間
                             new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
-
                             //20秒後に元に戻る
                             new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer,skinModelPlayer).runTaskLater(getPlugin(), 400);
                         }
@@ -218,14 +214,10 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("knight");
                             }
                             //particle
-                            Location location = player.getLocation();
-                            location.getWorld().spawnParticle(Particle.SPIT, location.getX(), location.getY(), location.getZ(), 800, 0.3, 1, 0.3, 0);
-                            location.getWorld().spawnParticle(Particle.TRIAL_SPAWNER_DETECTION, location.getX(), location.getY(), location.getZ(), 600, 0.3, 2, 0.3, 0);
-                            location.getWorld().spawnParticle(Particle.WARPED_SPORE, location.getX(), location.getY(), location.getZ(), 500, 1, 1, 1, 0);
-                            location.getWorld().playSound(location, Sound.ENTITY_GHAST_SHOOT, 1, 1);
-
-                            new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
-
+                            new CenterScheduler(player).runTaskLater(Tasogare.getPlugin(),7);
+                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
+                            //残り時間
+                            new RemainScheduler(player).runTaskTimer(Tasogare.getPlugin(),0,20);
                             //20秒後元に戻す
                             new ReturnScheduler(player, inventoryPlayer, profilePlayer, itemStackPlayer, skinPlayer, urlPlayer,skinModelPlayer).runTaskLater(getPlugin(), 400);
                         }
