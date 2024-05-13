@@ -80,9 +80,10 @@ public class Disguise implements Listener {
                             profile.setProperties(propertyEnemy);
                             profile.complete();
                             profile.update();
+                            urlHashMap.put(enemy,profile);
 
                             //particle
-                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy).runTaskLater(getPlugin(),7);
+                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy).runTaskLater(getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
@@ -171,9 +172,10 @@ public class Disguise implements Listener {
                             profile.setProperties(propertyEnemy);
                             profile.complete();
                             profile.update();
+                            urlHashMap.put(enemy,profile);
 
                             //particle
-                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy).runTaskLater(Tasogare.getPlugin(),7);
+                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy).runTaskLater(Tasogare.getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
