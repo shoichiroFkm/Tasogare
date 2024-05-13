@@ -94,7 +94,7 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
                                 player.addScoreboardTag("ninja");
                             } else if (tag.contains("blender")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                                inventoryPlayer.addItem(new ItemStack(Material.ECHO_SHARD));
                                 player.addScoreboardTag("blender");
                             } else if (tag.contains("matasaburo")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
@@ -186,7 +186,7 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
                                 player.addScoreboardTag("ninja");
                             } else if (tag.contains("blender")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.POPPY));
+                                inventoryPlayer.addItem(new ItemStack(Material.ECHO_SHARD));
                                 player.addScoreboardTag("blender");
                             } else if (tag.contains("matasaburo")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.FEATHER));

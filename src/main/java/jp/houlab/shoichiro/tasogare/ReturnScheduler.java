@@ -52,8 +52,8 @@ public class ReturnScheduler extends BukkitRunnable {
         }else if(inventory.contains(Material.BLAZE_POWDER)) {
             inventory.remove(new ItemStack(Material.BLAZE_POWDER));
             player.removeScoreboardTag("pharmacy");
-        }else if(inventory.contains(Material.POPPY)) {
-            inventory.remove(new ItemStack(Material.POPPY));
+        }else if(inventory.contains(Material.ECHO_SHARD)) {
+            inventory.remove(new ItemStack(Material.ECHO_SHARD));
             player.removeScoreboardTag("blender");
         }else if(inventory.contains(Material.FEATHER)) {
             inventory.remove(new ItemStack(Material.FEATHER));
