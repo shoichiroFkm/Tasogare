@@ -29,6 +29,7 @@ public class Disguise implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
 
         Player player = event.getPlayer();
+        Location location=event.getInteractionPoint();
         Team team = player.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
         if (team == null) {
             return;
@@ -83,7 +84,7 @@ public class Disguise implements Listener {
                             urlHashMap.put(enemy,profile);
 
                             //particle
-                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy).runTaskLater(getPlugin(),7);
+                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
@@ -175,7 +176,7 @@ public class Disguise implements Listener {
                             urlHashMap.put(enemy,profile);
 
                             //particle
-                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy).runTaskLater(Tasogare.getPlugin(),7);
+                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
