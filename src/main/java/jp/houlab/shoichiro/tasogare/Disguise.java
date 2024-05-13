@@ -60,6 +60,14 @@ public class Disguise implements Listener {
                             profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
 
+                            //インベントリPlayer（装備)
+                            PlayerInventory inventoryPlayer = player.getInventory();
+                            ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+
+                            //インベントリEnemy（装備）
+                            PlayerInventory inventoryEnemy = enemy.getInventory();
+                            ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
                             PlayerProfile profileEnemy = enemy.getPlayerProfile();
@@ -72,16 +80,10 @@ public class Disguise implements Listener {
                             profile.setProperties(propertyEnemy);
                             profile.complete();
                             profile.update();
-                            player.setPlayerProfile(profile);
 
-                            //インベントリPlayer（装備)
-                            PlayerInventory inventoryPlayer = player.getInventory();
-                            ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
-
-                            //インベントリEnemy（装備）
-                            PlayerInventory inventoryEnemy = enemy.getInventory();
-                            ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
-                            inventoryPlayer.setArmorContents(itemStackEnemy);
+                            //particle
+                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy).runTaskLater(getPlugin(),7);
+                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
@@ -122,9 +124,6 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("knight");
                             }
 
-                            //particle
-                            new CenterScheduler(player).runTaskLater(getPlugin(),7);
-                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
                             //残り時間
                             new RemainScheduler(player).runTaskTimer(getPlugin(),0,20);
                             //20秒後に元に戻る
@@ -152,6 +151,14 @@ public class Disguise implements Listener {
                             profilePlayer.setProperties(propertyPlayer);
                             urlHashMap.put(player, profilePlayer);
 
+                            //インベントリPlayer（装備）
+                            PlayerInventory inventoryPlayer = player.getInventory();
+                            ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+
+                            //インベントリEnemy（装備）
+                            PlayerInventory inventoryEnemy = enemy.getInventory();
+                            ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+
                             //スキン（enemy）
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
                             PlayerProfile profileEnemy = enemy.getPlayerProfile();
@@ -164,16 +171,10 @@ public class Disguise implements Listener {
                             profile.setProperties(propertyEnemy);
                             profile.complete();
                             profile.update();
-                            player.setPlayerProfile(profile);
 
-                            //インベントリPlayer（装備）
-                            PlayerInventory inventoryPlayer = player.getInventory();
-                            ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
-
-                            //インベントリEnemy（装備）
-                            PlayerInventory inventoryEnemy = enemy.getInventory();
-                            ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
-                            inventoryPlayer.setArmorContents(itemStackEnemy);
+                            //particle
+                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy).runTaskLater(Tasogare.getPlugin(),7);
+                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
@@ -213,9 +214,7 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                                 player.addScoreboardTag("knight");
                             }
-                            //particle
-                            new CenterScheduler(player).runTaskLater(Tasogare.getPlugin(),7);
-                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
+
                             //残り時間
                             new RemainScheduler(player).runTaskTimer(Tasogare.getPlugin(),0,20);
                             //20秒後元に戻す
