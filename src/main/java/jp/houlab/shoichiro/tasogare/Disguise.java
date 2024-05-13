@@ -247,6 +247,9 @@ public class Disguise implements Listener {
 
     @EventHandler
     public void PlayerDeath(PlayerDeathEvent event) {
+
+        Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
+
         Player player = event.getPlayer();
         Set<String> tag = player.getScoreboardTags();
         urlHashMap.get(player);
@@ -264,7 +267,7 @@ public class Disguise implements Listener {
                     urlHashMap.get(player).update();
                     player.setPlayerProfile(urlHashMap.get(player));
 
-                    Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
+
 
                 }
             }
