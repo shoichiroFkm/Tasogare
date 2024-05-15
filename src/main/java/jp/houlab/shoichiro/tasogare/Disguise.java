@@ -29,7 +29,7 @@ public class Disguise implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
 
         Player player = event.getPlayer();
-        Location location=event.getInteractionPoint();
+        Location location=player.getLocation();
         Team team = player.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
         if (team == null) {
             return;
@@ -247,11 +247,12 @@ public class Disguise implements Listener {
 
     @EventHandler
     public void PlayerDeath(PlayerDeathEvent event) {
-
-        Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
-
         Player player = event.getPlayer();
         Set<String> tag = player.getScoreboardTags();
+
+        Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
+        player.clearTitle();
+
         urlHashMap.get(player);
         Set<ProfileProperty> propertyPlayer =urlHashMap.get(player).getProperties();
         PlayerTextures skinPlayer = urlHashMap.get(player).getTextures();
