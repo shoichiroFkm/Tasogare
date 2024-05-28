@@ -87,8 +87,8 @@ public class Disguise implements Listener {
                                 profile.update();
                                 urlHashMap.put(enemy, profile);
                             }else if (tagEnemy.contains("tasogare2")){
-                                profile.complete();
-                                profile.update();
+                                urlHashMap.get(enemy).complete();
+                                urlHashMap.get(enemy).update();
                             }
 
                             //particle
@@ -187,8 +187,8 @@ public class Disguise implements Listener {
                                 profile.update();
                                 urlHashMap.put(enemy, profile);
                             }else if (tagEnemy.contains("tasogare2")){
-                                profile.complete();
-                                profile.update();
+                                urlHashMap.get(enemy).complete();
+                                urlHashMap.get(enemy).update();
                             }
 
                             //particle
