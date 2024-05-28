@@ -59,7 +59,7 @@ public class Disguise implements Listener {
                             skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player, profilePlayer);
+                            urlHashMap.put(player, (PlayerProfile) profilePlayer.clone());
 
                             //インベントリPlayer（装備)
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -167,7 +167,7 @@ public class Disguise implements Listener {
                             skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player, profilePlayer);
+                            urlHashMap.put(player, (PlayerProfile) profilePlayer.clone());
 
                             //インベントリPlayer（装備）
                             PlayerInventory inventoryPlayer = player.getInventory();
