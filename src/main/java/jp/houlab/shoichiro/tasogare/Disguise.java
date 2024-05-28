@@ -85,10 +85,16 @@ public class Disguise implements Listener {
                                 profile.setProperties(propertyEnemy);
                                 profile.complete();
                                 profile.update();
-                                urlHashMap.put(enemy, profile);
+
+
                             }else if (tagEnemy.contains("tasogare2")){
-                                urlHashMap.get(enemy).complete();
-                                urlHashMap.get(enemy).update();
+                                PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
+                                URL urlEnemy = skinEnemy.getSkin();
+                                PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
+                                skinEnemy.setSkin(urlEnemy, skinModelEnemy);
+                                profile.setTextures(skinEnemy);
+                                profile.complete();
+                                profile.update();
                             }
 
                             //particle
@@ -185,10 +191,16 @@ public class Disguise implements Listener {
                                 profile.setProperties(propertyEnemy);
                                 profile.complete();
                                 profile.update();
-                                urlHashMap.put(enemy, profile);
+
+
                             }else if (tagEnemy.contains("tasogare2")){
-                                urlHashMap.get(enemy).complete();
-                                urlHashMap.get(enemy).update();
+                                PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
+                                URL urlEnemy = skinEnemy.getSkin();
+                                PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
+                                skinEnemy.setSkin(urlEnemy, skinModelEnemy);
+                                profile.setTextures(skinEnemy);
+                                profile.complete();
+                                profile.update();
                             }
 
                             //particle
