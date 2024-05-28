@@ -74,7 +74,7 @@ public class Disguise implements Listener {
 
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
 
-                            if (!tagEnemy.contains("tasogare")) {
+                            if (!tagEnemy.contains("tasogare2")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                                 PlayerTextures skinEnemy = profileEnemy.getTextures();
@@ -86,7 +86,7 @@ public class Disguise implements Listener {
                                 profile.complete();
                                 profile.update();
                                 urlHashMap.put(enemy, profile);
-                            }else if (tagEnemy.contains("tasogare")){
+                            }else if (tagEnemy.contains("tasogare2")){
                                 profile.complete();
                                 profile.update();
                             }
@@ -174,7 +174,7 @@ public class Disguise implements Listener {
 
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
 
-                            if (!tagEnemy.contains("tasogare")) {
+                            if (!tagEnemy.contains("tasogare2")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                                 PlayerTextures skinEnemy = profileEnemy.getTextures();
@@ -186,7 +186,7 @@ public class Disguise implements Listener {
                                 profile.complete();
                                 profile.update();
                                 urlHashMap.put(enemy, profile);
-                            }else if (tagEnemy.contains("tasogare")){
+                            }else if (tagEnemy.contains("tasogare2")){
                                 profile.complete();
                                 profile.update();
                             }
