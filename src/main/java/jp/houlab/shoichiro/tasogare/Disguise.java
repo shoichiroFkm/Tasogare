@@ -88,17 +88,19 @@ public class Disguise implements Listener {
 
 
                             }else if (tagEnemy.contains("tasogare2")){
+                                Set<ProfileProperty> propertyEnemy = urlHashMap.get(enemy).getProperties();
                                 PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
                                 URL urlEnemy = skinEnemy.getSkin();
                                 PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
                                 skinEnemy.setSkin(urlEnemy, skinModelEnemy);
                                 profile.setTextures(skinEnemy);
+                                profile.setProperties(propertyEnemy);
                                 profile.complete();
                                 profile.update();
                             }
 
                             //particle
-                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
+                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
@@ -194,17 +196,19 @@ public class Disguise implements Listener {
 
 
                             }else if (tagEnemy.contains("tasogare2")){
+                                Set<ProfileProperty> propertyEnemy = urlHashMap.get(enemy).getProperties();
                                 PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
                                 URL urlEnemy = skinEnemy.getSkin();
                                 PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
                                 skinEnemy.setSkin(urlEnemy, skinModelEnemy);
                                 profile.setTextures(skinEnemy);
+                                profile.setProperties(propertyEnemy);
                                 profile.complete();
                                 profile.update();
                             }
 
                             //particle
-                            new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
+                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //いったんアイテム消す
