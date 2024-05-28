@@ -132,7 +132,7 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
                                 player.addScoreboardTag("hunter");
                             } else if (tagEnemy.contains("spectator")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                                inventoryPlayer.addItem(new ItemStack(Material.FIRE_CHARGE));
                                 player.addScoreboardTag("spectator");
                             } else if (tagEnemy.contains("omen")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
@@ -239,7 +239,7 @@ public class Disguise implements Listener {
                                 inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
                                 player.addScoreboardTag("hunter");
                             } else if (tagEnemy.contains("spectator")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.COCOA));
+                                inventoryPlayer.addItem(new ItemStack(Material.FIRE_CHARGE));
                                 player.addScoreboardTag("spectator");
                             } else if (tagEnemy.contains("omen")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.SMOKER));

@@ -70,8 +70,8 @@ public class ReturnScheduler extends BukkitRunnable {
         }else if(inventory.contains(Material.APPLE)) {
             inventory.remove(new ItemStack(Material.APPLE));
             player.removeScoreboardTag("wizard");
-        }else if(inventory.contains(Material.COCOA)) {
-            inventory.remove(new ItemStack(Material.COCOA));
+        }else if(inventory.contains(Material.FIRE_CHARGE)) {
+            inventory.remove(new ItemStack(Material.FIRE_CHARGE));
             player.removeScoreboardTag("spectator");
         }else if(inventory.contains(Material.HEART_OF_THE_SEA)) {
             inventory.remove(new ItemStack(Material.HEART_OF_THE_SEA));
