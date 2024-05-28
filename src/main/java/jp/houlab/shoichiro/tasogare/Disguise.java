@@ -74,7 +74,7 @@ public class Disguise implements Listener {
 
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
 
-                            if (!tagEnemy.contains("tasogare2")) {
+                            if (!tagEnemy.contains("disguise")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                                 PlayerTextures skinEnemy = profileEnemy.getTextures();
@@ -87,7 +87,7 @@ public class Disguise implements Listener {
                                 profile.update();
 
 
-                            }else if (tagEnemy.contains("tasogare2")){
+                            }else if (tagEnemy.contains("disguise")){
                                 Set<ProfileProperty> propertyEnemy = urlHashMap.get(enemy).getProperties();
                                 PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
                                 URL urlEnemy = skinEnemy.getSkin();
@@ -110,36 +110,47 @@ public class Disguise implements Listener {
                             if (tagEnemy.contains("pharmacy")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                 player.addScoreboardTag("pharmacy");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("ninja")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
                                 player.addScoreboardTag("ninja");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("blender")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.ECHO_SHARD));
                                 player.addScoreboardTag("blender");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("matasaburo")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
                                 player.addScoreboardTag("matasaburo");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("engineer")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("engineer");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("wizard")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.APPLE));
                                 player.addScoreboardTag("wizard");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("tasogare")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
                                 player.addScoreboardTag("tasogare2");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("hunter")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
                                 player.addScoreboardTag("hunter");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("spectator")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.FIRE_CHARGE));
                                 player.addScoreboardTag("spectator");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("omen")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
                                 player.addScoreboardTag("omen");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("knight")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                                 player.addScoreboardTag("knight");
+                                player.addScoreboardTag("disguise");
                             }
 
                             //残り時間
@@ -182,7 +193,7 @@ public class Disguise implements Listener {
 
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
 
-                            if (!tagEnemy.contains("tasogare2")) {
+                            if (!tagEnemy.contains("disguise")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                                 PlayerTextures skinEnemy = profileEnemy.getTextures();
@@ -195,7 +206,7 @@ public class Disguise implements Listener {
                                 profile.update();
 
 
-                            }else if (tagEnemy.contains("tasogare2")){
+                            }else if (tagEnemy.contains("disguise")){
                                 Set<ProfileProperty> propertyEnemy = urlHashMap.get(enemy).getProperties();
                                 PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
                                 URL urlEnemy = skinEnemy.getSkin();
@@ -217,36 +228,47 @@ public class Disguise implements Listener {
                             if (tagEnemy.contains("pharmacy")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                 player.addScoreboardTag("pharmacy");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("ninja")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.PURPLE_DYE));
                                 player.addScoreboardTag("ninja");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("blender")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.ECHO_SHARD));
                                 player.addScoreboardTag("blender");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("matasaburo")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.FEATHER));
                                 player.addScoreboardTag("matasaburo");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("engineer")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("engineer");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("wizard")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.APPLE));
                                 player.addScoreboardTag("wizard");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("tasogare")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
                                 player.addScoreboardTag("tasogare2");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("hunter")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.ARCHER_POTTERY_SHERD));
                                 player.addScoreboardTag("hunter");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("spectator")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.FIRE_CHARGE));
                                 player.addScoreboardTag("spectator");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("omen")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
                                 player.addScoreboardTag("omen");
+                                player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("knight")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.HEART_OF_THE_SEA));
                                 player.addScoreboardTag("knight");
+                                player.addScoreboardTag("disguise");
                             }
 
                             //残り時間
