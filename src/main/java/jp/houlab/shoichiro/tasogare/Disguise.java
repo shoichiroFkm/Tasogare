@@ -88,8 +88,9 @@ public class Disguise implements Listener {
 
 
                             }else if (tagEnemy.contains("disguise")){
-                                Set<ProfileProperty> propertyEnemy = urlHashMap.get(enemy).getProperties();
-                                PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
+                                PlayerProfile profileEnemy = urlHashMap.get(enemy);
+                                Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
+                                PlayerTextures skinEnemy = profileEnemy.getTextures();
                                 URL urlEnemy = skinEnemy.getSkin();
                                 PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
                                 skinEnemy.setSkin(urlEnemy, skinModelEnemy);
@@ -207,8 +208,9 @@ public class Disguise implements Listener {
 
 
                             }else if (tagEnemy.contains("disguise")){
-                                Set<ProfileProperty> propertyEnemy = urlHashMap.get(enemy).getProperties();
-                                PlayerTextures skinEnemy = urlHashMap.get(enemy).getTextures();
+                                PlayerProfile profileEnemy = urlHashMap.get(enemy);
+                                Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
+                                PlayerTextures skinEnemy = profileEnemy.getTextures();
                                 URL urlEnemy = skinEnemy.getSkin();
                                 PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
                                 skinEnemy.setSkin(urlEnemy, skinModelEnemy);
