@@ -59,7 +59,10 @@ public class Disguise implements Listener {
                             skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player, (PlayerProfile) profilePlayer.clone());
+                            urlHashMap.put(player,urlPlayer);
+                            texturesHashMap.put(player,skinPlayer);
+                            skinModelHashMap.put(player,skinModelPlayer);
+                            profileHashMap.put(player, (PlayerProfile) profilePlayer.clone());
 
                             //インベントリPlayer（装備)
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -88,11 +91,11 @@ public class Disguise implements Listener {
 
 
                             }else if (tagEnemy.contains("disguise")){
-                                PlayerProfile profileEnemy = urlHashMap.get(enemy);
+                                PlayerProfile profileEnemy = profileHashMap.get(enemy);
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
-                                PlayerTextures skinEnemy = profileEnemy.getTextures();
-                                URL urlEnemy = skinEnemy.getSkin();
-                                PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
+                                PlayerTextures skinEnemy =texturesHashMap.get(enemy);
+                                URL urlEnemy = urlHashMap.get(enemy);
+                                PlayerTextures.SkinModel skinModelEnemy = skinModelHashMap.get(enemy);
                                 skinEnemy.setSkin(urlEnemy, skinModelEnemy);
                                 profile.setTextures(skinEnemy);
                                 profile.setProperties(propertyEnemy);
@@ -179,7 +182,10 @@ public class Disguise implements Listener {
                             skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player, (PlayerProfile) profilePlayer.clone());
+                            urlHashMap.put(player,urlPlayer);
+                            texturesHashMap.put(player,skinPlayer);
+                            skinModelHashMap.put(player,skinModelPlayer);
+                            profileHashMap.put(player, (PlayerProfile) profilePlayer.clone());
 
                             //インベントリPlayer（装備）
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -208,11 +214,11 @@ public class Disguise implements Listener {
 
 
                             }else if (tagEnemy.contains("disguise")){
-                                PlayerProfile profileEnemy = urlHashMap.get(enemy);
+                                PlayerProfile profileEnemy =  profileHashMap.get(enemy);
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
-                                PlayerTextures skinEnemy = profileEnemy.getTextures();
-                                URL urlEnemy = skinEnemy.getSkin();
-                                PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
+                                PlayerTextures skinEnemy = texturesHashMap.get(enemy);
+                                URL urlEnemy = urlHashMap.get(enemy);
+                                PlayerTextures.SkinModel skinModelEnemy =skinModelHashMap.get(enemy);
                                 skinEnemy.setSkin(urlEnemy, skinModelEnemy);
                                 profile.setTextures(skinEnemy);
                                 profile.setProperties(propertyEnemy);
@@ -308,20 +314,20 @@ public class Disguise implements Listener {
         Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
         player.clearTitle();
 
-        urlHashMap.get(player);
-        Set<ProfileProperty> propertyPlayer =urlHashMap.get(player).getProperties();
-        PlayerTextures skinPlayer = urlHashMap.get(player).getTextures();
+        profileHashMap.get(player);
+        Set<ProfileProperty> propertyPlayer = profileHashMap.get(player).getProperties();
+        PlayerTextures skinPlayer =  profileHashMap.get(player).getTextures();
         URL urlPlayer = skinPlayer.getSkin();
         PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
 
         if ((tag.contains("tasogare")) ) {
-                if(!urlHashMap.get(player).hasTextures()) {
+                if(! profileHashMap.get(player).hasTextures()) {
                     skinPlayer.setSkin(urlPlayer,skinModelPlayer);
-                    urlHashMap.get(player).setTextures(skinPlayer);
-                    urlHashMap.get(player).setProperties(propertyPlayer);
-                    urlHashMap.get(player).complete();
-                    urlHashMap.get(player).update();
-                    player.setPlayerProfile(urlHashMap.get(player));
+                    profileHashMap.get(player).setTextures(skinPlayer);
+                    profileHashMap.get(player).setProperties(propertyPlayer);
+                    profileHashMap.get(player).complete();
+                    profileHashMap.get(player).update();
+                    player.setPlayerProfile( profileHashMap.get(player));
 
 
 

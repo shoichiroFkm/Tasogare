@@ -34,7 +34,7 @@ public class ReturnScheduler extends BukkitRunnable {
     @Override
     public void run() {
         //スキンを戻す
-        PlayerProfile playerProfile = (PlayerProfile) urlHashMap.get(player).clone();
+        PlayerProfile playerProfile = (PlayerProfile)  profileHashMap.get(player).clone();
         textures.setSkin(url,model);
         playerProfile.setTextures(textures);
         playerProfile.complete();
