@@ -74,6 +74,7 @@ public class Disguise implements Listener {
 
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
 
+                            if (!tagEnemy.contains("tasogare")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
                                 Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
                                 PlayerTextures skinEnemy = profileEnemy.getTextures();
@@ -85,7 +86,10 @@ public class Disguise implements Listener {
                                 profile.complete();
                                 profile.update();
                                 urlHashMap.put(enemy, profile);
-
+                            }else if (tagEnemy.contains("tasogare")){
+                                profile.complete();
+                                profile.update();
+                            }
 
                             //particle
                             new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
@@ -169,17 +173,23 @@ public class Disguise implements Listener {
                             Set<String> tagEnemy = enemy.getScoreboardTags();
 
                             PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
-                            PlayerProfile profileEnemy = enemy.getPlayerProfile();
-                            Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
-                            PlayerTextures skinEnemy = profileEnemy.getTextures();
-                            URL urlEnemy = skinEnemy.getSkin();
-                            PlayerTextures.SkinModel skinModelEnemy=skinEnemy.getSkinModel();
-                            skinEnemy.setSkin(urlEnemy,skinModelEnemy);
-                            profile.setTextures(skinEnemy);
-                            profile.setProperties(propertyEnemy);
-                            profile.complete();
-                            profile.update();
-                            urlHashMap.put(enemy,profile);
+
+                            if (!tagEnemy.contains("tasogare")) {
+                                PlayerProfile profileEnemy = enemy.getPlayerProfile();
+                                Set<ProfileProperty> propertyEnemy = profileEnemy.getProperties();
+                                PlayerTextures skinEnemy = profileEnemy.getTextures();
+                                URL urlEnemy = skinEnemy.getSkin();
+                                PlayerTextures.SkinModel skinModelEnemy = skinEnemy.getSkinModel();
+                                skinEnemy.setSkin(urlEnemy, skinModelEnemy);
+                                profile.setTextures(skinEnemy);
+                                profile.setProperties(propertyEnemy);
+                                profile.complete();
+                                profile.update();
+                                urlHashMap.put(enemy, profile);
+                            }else if (tagEnemy.contains("tasogare")){
+                                profile.complete();
+                                profile.update();
+                            }
 
                             //particle
                             new CenterScheduler(player,urlHashMap.get(enemy),inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
