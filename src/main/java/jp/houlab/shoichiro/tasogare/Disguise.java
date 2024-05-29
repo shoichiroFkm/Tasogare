@@ -31,6 +31,7 @@ public class Disguise implements Listener {
         Player player = event.getPlayer();
         Location location=player.getLocation();
         Team team = player.getServer().getScoreboardManager().getMainScoreboard().getPlayerTeam(player);
+
         if (team == null) {
             return;
         }
@@ -64,18 +65,16 @@ public class Disguise implements Listener {
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
 
-
-                            //インベントリPlayer（装備)
+                            //ArmorPlayer
                             PlayerInventory inventoryPlayer = player.getInventory();
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+                            itemStackHashMap.put(player,itemStackPlayer);
 
-                            //インベントリEnemy（装備）
-                            PlayerInventory inventoryEnemy = enemy.getInventory();
-                            ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+                            //ArmorEnemy
+                            ItemStack[] itemStackEnemy =itemStackHashMap.get(enemy);
 
                             //Profile（enemy）
                             Set<String> tagEnemy = enemy.getScoreboardTags();
-
                             PlayerProfile profile = (PlayerProfile) profileHashMap.get(player).clone();
 
                             if (!tagEnemy.contains("disguise")) {
@@ -89,7 +88,6 @@ public class Disguise implements Listener {
                                 profile.setProperties(propertyEnemy);
                                 profile.complete();
                                 profile.update();
-
 
                             }else if (tagEnemy.contains("disguise")){
                                 PlayerProfile profileEnemy = profileHashMap.get(enemy);
@@ -108,10 +106,10 @@ public class Disguise implements Listener {
                             new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
-                            //いったんアイテム消す
+                            //ability_item_remove
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
-                            //スキルアイテムもらう
 
+                            //ability_item_add
                             if (tagEnemy.contains("pharmacy")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                 player.addScoreboardTag("pharmacy");
@@ -188,18 +186,16 @@ public class Disguise implements Listener {
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
 
-
-                            //インベントリPlayer（装備）
+                            //ArmorPlayer
                             PlayerInventory inventoryPlayer = player.getInventory();
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
+                            itemStackHashMap.put(player,itemStackPlayer);
 
-                            //インベントリEnemy（装備）
-                            PlayerInventory inventoryEnemy = enemy.getInventory();
-                            ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+                            //ArmorEnemy
+                            ItemStack[] itemStackEnemy = itemStackHashMap.get(enemy);
 
                             //Profile（enemy）
                             Set<String> tagEnemy = enemy.getScoreboardTags();
-
                             PlayerProfile profile = (PlayerProfile) profileHashMap.get(player).clone();
 
                             if (!tagEnemy.contains("disguise")) {
@@ -213,7 +209,6 @@ public class Disguise implements Listener {
                                 profile.setProperties(propertyEnemy);
                                 profile.complete();
                                 profile.update();
-
 
                             }else if (tagEnemy.contains("disguise")){
                                 PlayerProfile profileEnemy =  profileHashMap.get(enemy);
@@ -232,9 +227,10 @@ public class Disguise implements Listener {
                             new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
                             new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
-                            //いったんアイテム消す
+                            //ability_item_remove
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
-                            //スキルアイテムもらう
+
+                            //ability_item_add
                             if (tagEnemy.contains("pharmacy")) {
                                 inventoryPlayer.addItem(new ItemStack(Material.BLAZE_POWDER));
                                 player.addScoreboardTag("pharmacy");
@@ -330,9 +326,6 @@ public class Disguise implements Listener {
                     profileHashMap.get(player).complete();
                     profileHashMap.get(player).update();
                     player.setPlayerProfile( profileHashMap.get(player));
-
-
-
                 }
             }
         }
