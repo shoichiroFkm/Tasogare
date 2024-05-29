@@ -52,17 +52,18 @@ public class Disguise implements Listener {
 
                             //Profile（player）
                             PlayerProfile profilePlayer = player.getPlayerProfile();
+                            profileHashMap.put(player, (PlayerProfile) profilePlayer.clone());
                             Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
                             PlayerTextures skinPlayer = profilePlayer.getTextures();
+                            texturesHashMap.put(player,skinPlayer);
                             URL urlPlayer = skinPlayer.getSkin();
+                            urlHashMap.put(player,urlPlayer);
                             PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
+                            skinModelHashMap.put(player,skinModelPlayer);
                             skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player,urlPlayer);
-                            texturesHashMap.put(player,skinPlayer);
-                            skinModelHashMap.put(player,skinModelPlayer);
-                            profileHashMap.put(player, (PlayerProfile) profilePlayer.clone());
+
 
                             //インベントリPlayer（装備)
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -75,7 +76,7 @@ public class Disguise implements Listener {
                             //Profile（enemy）
                             Set<String> tagEnemy = enemy.getScoreboardTags();
 
-                            PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
+                            PlayerProfile profile = (PlayerProfile) profileHashMap.get(player).clone();
 
                             if (!tagEnemy.contains("disguise")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
@@ -175,17 +176,18 @@ public class Disguise implements Listener {
 
                             //Profile（player）
                             PlayerProfile profilePlayer = player.getPlayerProfile();
+                            profileHashMap.put(player, (PlayerProfile) profilePlayer.clone());
                             Set<ProfileProperty> propertyPlayer = profilePlayer.getProperties();
                             PlayerTextures skinPlayer = profilePlayer.getTextures();
+                            texturesHashMap.put(player,skinPlayer);
                             URL urlPlayer = skinPlayer.getSkin();
+                            urlHashMap.put(player,urlPlayer);
                             PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
+                            skinModelHashMap.put(player,skinModelPlayer);
                             skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                             profilePlayer.setTextures(skinPlayer);
                             profilePlayer.setProperties(propertyPlayer);
-                            urlHashMap.put(player,urlPlayer);
-                            texturesHashMap.put(player,skinPlayer);
-                            skinModelHashMap.put(player,skinModelPlayer);
-                            profileHashMap.put(player, (PlayerProfile) profilePlayer.clone());
+
 
                             //インベントリPlayer（装備）
                             PlayerInventory inventoryPlayer = player.getInventory();
@@ -198,7 +200,7 @@ public class Disguise implements Listener {
                             //Profile（enemy）
                             Set<String> tagEnemy = enemy.getScoreboardTags();
 
-                            PlayerProfile profile = (PlayerProfile) profilePlayer.clone();
+                            PlayerProfile profile = (PlayerProfile) profileHashMap.get(player).clone();
 
                             if (!tagEnemy.contains("disguise")) {
                                 PlayerProfile profileEnemy = enemy.getPlayerProfile();
