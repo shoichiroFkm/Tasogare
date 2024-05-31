@@ -16,7 +16,7 @@ public class ParticleScheduler extends BukkitRunnable {
     @Override
     public void run() {
         a = a + 0.5;
-        player.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, player.getX() + a, player.getY(), player.getZ(), 800, 0, 2, 1, 0);
+        player.getWorld().spawnParticle(Particle.ELECTRIC_SPARK, player.getX() + a, player.getY(), player.getZ(), 300, 0, 2, 1, 0);
         player.getWorld().spawnParticle(Particle.CRIT, player.getX() + a, player.getY(), player.getZ(), 300, 0, 2, 1, 0);
         if (a == 3.0) {
             cancel();
