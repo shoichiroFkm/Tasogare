@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.profile.PlayerTextures;
 import org.bukkit.scoreboard.Team;
+import org.bukkit.util.Vector;
 
 import java.net.URL;
 import java.util.*;
@@ -103,8 +104,12 @@ public class Disguise implements Listener {
                             }
 
                             //particle
+                            Location particleLocation=location.clone();
+                            Vector direction=particleLocation.getDirection();
+                            Location spawnLocation=particleLocation.add(direction.multiply(3));
+
                             new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
-                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
+                            new ParticleScheduler(player,spawnLocation).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //ability_item_remove
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
@@ -192,7 +197,7 @@ public class Disguise implements Listener {
                             itemStackHashMap.put(player,itemStackPlayer);
 
                             //ArmorEnemy
-                            ItemStack[] itemStackEnemy = itemStackHashMap.get(enemy);
+                            ItemStack[] itemStackEnemy = itemStackHashMap.get(enemy).clone();
 
                             //Profile（enemy）
                             Set<String> tagEnemy = enemy.getScoreboardTags();
@@ -224,8 +229,12 @@ public class Disguise implements Listener {
                             }
 
                             //particle
+                            Location particleLocation=location.clone();
+                            Vector direction=particleLocation.getDirection();
+                            Location spawnLocation=particleLocation.add(direction.multiply(3));
+
                             new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
-                            new ParticleScheduler(player).runTaskTimer(Tasogare.getPlugin(), 0L,1);
+                            new ParticleScheduler(player,spawnLocation).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //ability_item_remove
                             inventoryPlayer.remove(Material.GLOWSTONE_DUST);
