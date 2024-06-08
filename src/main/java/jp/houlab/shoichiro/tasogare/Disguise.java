@@ -12,7 +12,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.profile.PlayerTextures;
@@ -314,15 +313,12 @@ public class Disguise implements Listener {
     public void InventoryClickEvent(InventoryClickEvent event) {
         Player player= (Player) event.getWhoClicked();
         Set<String> tag = player.getScoreboardTags();
-        Inventory inventory=player.getInventory();
         InventoryType.SlotType slot = event.getSlotType();
 
-        if ((tag.contains("tasogare") && !(inventory.contains(Material.GLOWSTONE_DUST))) || (tag.contains("tasogare") && tag.contains("tasogare2"))){
-
+        if (tag.contains("disguise")){
              if (slot == InventoryType.SlotType.ARMOR) {
                  event.setCancelled(true);
                  event.setResult(Event.Result.DENY);
-
              }
         }
     }
@@ -332,7 +328,7 @@ public class Disguise implements Listener {
         Player player = event.getPlayer();
         Set<String> tag = player.getScoreboardTags();
 
-        Bukkit.getScheduler().cancelTasks(Tasogare.getPlugin());
+        Bukkit.getScheduler().cancelTasks(getPlugin());
         player.clearTitle();
 
         profileHashMap.get(player);
@@ -341,15 +337,19 @@ public class Disguise implements Listener {
         URL urlPlayer = skinPlayer.getSkin();
         PlayerTextures.SkinModel skinModelPlayer=skinPlayer.getSkinModel();
 
-        if ((tag.contains("tasogare")) ) {
-                if(! profileHashMap.get(player).hasTextures()) {
+        if ((tag.contains("tasogare")) && (tag.contains("disguise"))) {
                     skinPlayer.setSkin(urlPlayer,skinModelPlayer);
                     profileHashMap.get(player).setTextures(skinPlayer);
                     profileHashMap.get(player).setProperties(propertyPlayer);
                     profileHashMap.get(player).complete();
                     profileHashMap.get(player).update();
-                    player.setPlayerProfile( profileHashMap.get(player));
+                    player.setPlayerProfile(profileHashMap.get(player));
                 }
-            }
+
+        List<String> skills=config.getStringList("Skill");
+        for(String s:skills) {
+            player.removeScoreboardTag(s);
         }
+        player.addScoreboardTag("tasogare");
     }
+}

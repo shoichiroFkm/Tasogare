@@ -1,15 +1,17 @@
 Skill:
-  blender:
-  matasaburo:
-  engineer:
-  wizard:
-  tasogare:
-  pharmacy:
-  hunter:
-  spectator:
-  ninja:
-  omen:
-  knight:
+  - blender
+  - matasaburo
+  - engineer
+  - wizard
+  - tasogare
+  - pharmacy
+  - hunter
+  - spectator
+  - ninja
+  - omen
+  - knight
+  - disguise
+  - tasogare2
 
 AbilityItems:
   GLOWSTONE_DUST:
