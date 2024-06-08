@@ -14,4 +14,5 @@ public class v {
     static public HashMap<Player, PlayerTextures>texturesHashMap=new HashMap<>();
     static public HashMap<Player,PlayerTextures.SkinModel>skinModelHashMap=new HashMap<>();
     static public HashMap<Player, ItemStack[]>itemStackHashMap=new HashMap<>();
+
 }

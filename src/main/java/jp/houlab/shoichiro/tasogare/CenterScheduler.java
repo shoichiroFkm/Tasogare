@@ -5,23 +5,20 @@ import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
+
 import org.bukkit.scheduler.BukkitRunnable;
 
 public class CenterScheduler extends BukkitRunnable {
     Player player;
     Location location;
-PlayerProfile playerProfile;
-    PlayerInventory inventory;
-    ItemStack[] itemStacks;
-    public CenterScheduler(Player player,PlayerProfile playerProfile,PlayerInventory inventory,ItemStack[] itemStacks,Location location) {
+    PlayerProfile playerProfile;
+
+    public CenterScheduler(Player player,PlayerProfile playerProfile,Location location) {
 
         this.player = player;
         this.location=location;
         this.playerProfile=playerProfile;
-        this.inventory=inventory;
-        this.itemStacks=itemStacks;
+
     }
     @Override
     public void run(){
@@ -31,6 +28,6 @@ PlayerProfile playerProfile;
 
         player.setPlayerProfile(playerProfile);
 
-        inventory.setArmorContents(itemStacks);
+
     }
 }

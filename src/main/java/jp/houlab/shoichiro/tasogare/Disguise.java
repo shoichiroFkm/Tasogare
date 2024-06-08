@@ -71,11 +71,18 @@ public class Disguise implements Listener {
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
                             itemStackHashMap.put(player,itemStackPlayer);
 
+                            Set<String> tagEnemy = enemy.getScoreboardTags();
+
                             //ArmorEnemy
-                            ItemStack[] itemStackEnemy =itemStackHashMap.get(enemy);
+                            if(!tagEnemy.contains("disguise")){
+                                PlayerInventory inventoryEnemy=enemy.getInventory();
+                                ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+                                new ArmorScheduler(inventoryPlayer,itemStackEnemy).runTaskLater(Tasogare.getPlugin(),7);
+                            }else if (tagEnemy.contains("disguise")) {
+                                new ArmorScheduler(inventoryPlayer,itemStackHashMap.get(enemy)).runTaskLater(Tasogare.getPlugin(),7);
+                            }
 
                             //Profile（enemy）
-                            Set<String> tagEnemy = enemy.getScoreboardTags();
                             PlayerProfile profile = (PlayerProfile) profileHashMap.get(player).clone();
 
                             if (!tagEnemy.contains("disguise")) {
@@ -108,7 +115,7 @@ public class Disguise implements Listener {
                             Vector direction=particleLocation.getDirection();
                             Location spawnLocation=particleLocation.add(direction.multiply(3));
 
-                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(getPlugin(),7);
+                            new CenterScheduler(player,profile,location).runTaskLater(getPlugin(),7);
                             new ParticleScheduler(player,spawnLocation).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //ability_item_remove
@@ -196,11 +203,18 @@ public class Disguise implements Listener {
                             ItemStack[] itemStackPlayer = inventoryPlayer.getArmorContents();
                             itemStackHashMap.put(player,itemStackPlayer);
 
+                            Set<String> tagEnemy = enemy.getScoreboardTags();
+
                             //ArmorEnemy
-                            ItemStack[] itemStackEnemy = itemStackHashMap.get(enemy).clone();
+                            if(!tagEnemy.contains("disguise")){
+                                PlayerInventory inventoryEnemy=enemy.getInventory();
+                                ItemStack[] itemStackEnemy = inventoryEnemy.getArmorContents();
+                                new ArmorScheduler(inventoryPlayer,itemStackEnemy).runTaskLater(Tasogare.getPlugin(),7);
+                            }else if (tagEnemy.contains("disguise")) {
+                                new ArmorScheduler(inventoryPlayer,itemStackHashMap.get(enemy)).runTaskLater(Tasogare.getPlugin(),7);
+                            }
 
                             //Profile（enemy）
-                            Set<String> tagEnemy = enemy.getScoreboardTags();
                             PlayerProfile profile = (PlayerProfile) profileHashMap.get(player).clone();
 
                             if (!tagEnemy.contains("disguise")) {
@@ -233,7 +247,7 @@ public class Disguise implements Listener {
                             Vector direction=particleLocation.getDirection();
                             Location spawnLocation=particleLocation.add(direction.multiply(3));
 
-                            new CenterScheduler(player,profile,inventoryPlayer,itemStackEnemy,location).runTaskLater(Tasogare.getPlugin(),7);
+                            new CenterScheduler(player,profile,location).runTaskLater(Tasogare.getPlugin(),7);
                             new ParticleScheduler(player,spawnLocation).runTaskTimer(Tasogare.getPlugin(), 0L,1);
 
                             //ability_item_remove
