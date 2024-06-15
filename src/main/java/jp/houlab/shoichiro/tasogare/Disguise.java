@@ -138,11 +138,11 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("matasaburo");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("engineer") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
+                                inventoryPlayer.addItem(new ItemStack(Material.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("engineer");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("wizard") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                                inventoryPlayer.addItem(new ItemStack(Material.WILD_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("wizard");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("tasogare")  || tagEnemy.contains("disguise")) {
@@ -270,11 +270,11 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("matasaburo");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("engineer") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
+                                inventoryPlayer.addItem(new ItemStack(Material.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("engineer");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("wizard") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.APPLE));
+                                inventoryPlayer.addItem(new ItemStack(Material.WILD_ARMOR_TRIM_SMITHING_TEMPLATE));
                                 player.addScoreboardTag("wizard");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("tasogare") || tagEnemy.contains("disguise")) {

@@ -62,8 +62,8 @@ public class ReturnScheduler extends BukkitRunnable {
             inventory.remove(new ItemStack(Material.FEATHER));
             player.removeScoreboardTag("matasaburo");
             player.removeScoreboardTag("disguise");
-        }else if(inventory.contains(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE)) {
-            inventory.remove(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
+        }else if(inventory.contains(Material.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE)) {
+            inventory.remove(new ItemStack(Material.DUNE_ARMOR_TRIM_SMITHING_TEMPLATE));
             player.removeScoreboardTag("engineer");
             player.removeScoreboardTag("disguise");
         }else if(inventory.contains(Material.FIREWORK_STAR)) {
@@ -74,8 +74,8 @@ public class ReturnScheduler extends BukkitRunnable {
             inventory.remove(new ItemStack(Material.ARCHER_POTTERY_SHERD));
             player.removeScoreboardTag("hunter");
             player.removeScoreboardTag("disguise");
-        }else if(inventory.contains(Material.APPLE)) {
-            inventory.remove(new ItemStack(Material.APPLE));
+        }else if(inventory.contains(Material.WILD_ARMOR_TRIM_SMITHING_TEMPLATE)) {
+            inventory.remove(new ItemStack(Material.WILD_ARMOR_TRIM_SMITHING_TEMPLATE));
             player.removeScoreboardTag("wizard");
             player.removeScoreboardTag("disguise");
         }else if(inventory.contains(Material.CARROT_ON_A_STICK)) {
