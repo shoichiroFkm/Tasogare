@@ -66,8 +66,8 @@ public class ReturnScheduler extends BukkitRunnable {
             inventory.remove(new ItemStack(Material.SILENCE_ARMOR_TRIM_SMITHING_TEMPLATE));
             player.removeScoreboardTag("engineer");
             player.removeScoreboardTag("disguise");
-        }else if(inventory.contains(Material.SMOKER)) {
-            inventory.remove(new ItemStack(Material.SMOKER));
+        }else if(inventory.contains(Material.FIREWORK_STAR)) {
+            inventory.remove(new ItemStack(Material.FIREWORK_STAR));
             player.removeScoreboardTag("omen");
             player.removeScoreboardTag("disguise");
         }else if(inventory.contains(Material.ARCHER_POTTERY_SHERD)) {
@@ -78,16 +78,16 @@ public class ReturnScheduler extends BukkitRunnable {
             inventory.remove(new ItemStack(Material.APPLE));
             player.removeScoreboardTag("wizard");
             player.removeScoreboardTag("disguise");
-        }else if(inventory.contains(Material.FIRE_CHARGE)) {
-            inventory.remove(new ItemStack(Material.FIRE_CHARGE));
+        }else if(inventory.contains(Material.CARROT_ON_A_STICK)) {
+            inventory.remove(new ItemStack(Material.CARROT_ON_A_STICK));
             player.removeScoreboardTag("spectator");
             player.removeScoreboardTag("disguise");
         }else if(inventory.contains(Material.HEART_OF_THE_SEA)) {
             inventory.remove(new ItemStack(Material.HEART_OF_THE_SEA));
             player.removeScoreboardTag("knight");
             player.removeScoreboardTag("disguise");
-        }else if(inventory.contains(Material.BAMBOO)) {
-            inventory.remove(new ItemStack(Material.BAMBOO));
+        }else if(inventory.contains(Material.COMPASS)) {
+            inventory.remove(new ItemStack(Material.COMPASS));
             player.removeScoreboardTag("tasogare2");
             player.removeScoreboardTag("disguise");
         }

@@ -146,7 +146,7 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("wizard");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("tasogare")  || tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
+                                inventoryPlayer.addItem(new ItemStack(Material.COMPASS));
                                 player.addScoreboardTag("tasogare2");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("hunter") && !tagEnemy.contains("disguise")) {
@@ -154,11 +154,11 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("hunter");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("spectator") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.FIRE_CHARGE));
+                                inventoryPlayer.addItem(new ItemStack(Material.CARROT_ON_A_STICK));
                                 player.addScoreboardTag("spectator");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("omen") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                                inventoryPlayer.addItem(new ItemStack(Material.FIREWORK_STAR));
                                 player.addScoreboardTag("omen");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("knight") && !tagEnemy.contains("disguise")) {
@@ -278,7 +278,7 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("wizard");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("tasogare") || tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.BAMBOO));
+                                inventoryPlayer.addItem(new ItemStack(Material.COMPASS));
                                 player.addScoreboardTag("tasogare2");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("hunter") && !tagEnemy.contains("disguise")) {
@@ -286,11 +286,11 @@ public class Disguise implements Listener {
                                 player.addScoreboardTag("hunter");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("spectator") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.FIRE_CHARGE));
+                                inventoryPlayer.addItem(new ItemStack(Material.CARROT_ON_A_STICK));
                                 player.addScoreboardTag("spectator");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("omen") && !tagEnemy.contains("disguise")) {
-                                inventoryPlayer.addItem(new ItemStack(Material.SMOKER));
+                                inventoryPlayer.addItem(new ItemStack(Material.FIREWORK_STAR));
                                 player.addScoreboardTag("omen");
                                 player.addScoreboardTag("disguise");
                             } else if (tagEnemy.contains("knight") && !tagEnemy.contains("disguise")) {
