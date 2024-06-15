@@ -29,14 +29,14 @@ public class Ability implements Listener {
     }
 
     static void scanEnemy(Team team, Player player){
-        Location pos1 = new Location(player.getWorld(),config.getInt("EnemyArea."+team.getName()+"x"),config.getInt("EnemyArea."+team.getName()+"y"),config.getInt("EnemyArea."+team.getName()+"z"));
+        Location pos1 = new Location(player.getWorld(),config.getInt("EnemyArea."+team.getName()+".x"),config.getInt("EnemyArea."+team.getName()+".y"),config.getInt("EnemyArea."+team.getName()+".z"));
         for(String name : team.getEntries()) {
             if(player.getServer().getOfflinePlayer(name).isOnline()) {
                 Player enemy = player.getServer().getPlayer(name);
                 Location location = enemy.getLocation();
-                if (location.getX() - pos1.getX() < config.getInt("EnemyArea." + team.getName() + "dx")) {
-                    if (location.getY() - pos1.getY() < config.getInt("EnemyArea." + team.getName() + "dy")) {
-                        if (location.getZ() - pos1.getZ() < config.getInt("EnemyArea." + team.getName() + "dz")) {
+                if (location.getX() - pos1.getX() < config.getInt("EnemyArea." + team.getName() + ".dx")) {
+                    if (location.getY() - pos1.getY() < config.getInt("EnemyArea." + team.getName() + ".dy")) {
+                        if (location.getZ() - pos1.getZ() < config.getInt("EnemyArea." + team.getName() + ".dz")) {
                             enemy.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING,1,0));
                         }
                     }
