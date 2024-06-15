@@ -25,3 +25,19 @@ AbilityItems:
   COMPASS:
   CARROT_ON_A_STICK:
   WILD_ARMOR_TRIM_SMITHING_TEMPLATE:
+
+EnemyArea:
+  1:
+    x:
+    y:
+    z:
+    dx:
+    dy:
+    dz:
+  2:
+    x:
+    y:
+    z:
+    dx:
+    dy:
+    dz:
