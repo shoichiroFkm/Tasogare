@@ -24,3 +24,19 @@ AbilityItems:
   ECHO_SHARD:
   ARCHER_POTTERY_SHERD:
   FIRE_CHARGE:
+
+EnemyArea:
+  1:
+    x:
+    y:
+    z:
+    dx:
+    dy:
+    dz:
+  2:
+    x:
+    y:
+    z:
+    dx:
+    dy:
+    dz:
