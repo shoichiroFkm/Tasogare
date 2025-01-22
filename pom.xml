@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>jp.houlab.shoichiro</groupId>
-    <artifactId>Tasogare</artifactId>
+    <artifactId>tasogare</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -15,6 +15,14 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/shoichiroFkm/Tasogare</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <plugins>
